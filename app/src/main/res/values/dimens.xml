@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="commonSpacingMedium">8dp</dimen>
+    <dimen name="avatarSize">48dp</dimen>
+    <dimen name="indent">8dp</dimen>
+    <dimen name="marginEnd">8dp</dimen>
+    <dimen name="marginStart">24dp</dimen>
+    <dimen name="height_image_ad">300dp</dimen>
+    <dimen name="postAvatarSize">48dp</dimen>
+    <dimen name="iconButtonMinSize">24dp</dimen>
+    <dimen name="commonSpacingXSLarge">64dp</dimen>
+</resources>

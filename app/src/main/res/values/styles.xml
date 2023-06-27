@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.AppTheme.ButtonAdd"
+        parent="Widget.MaterialComponents.Button">
+        <item name="iconTint">@color/icon_button_tint</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:background"> @drawable/button_background_rounded</item>
+        <item name="android:paddingStart">@dimen/commonSpacingMedium</item>
+        <item name="android:paddingEnd">@dimen/commonSpacingMedium</item>
+        <item name="android:minWidth">@dimen/iconButtonSize</item>
+        <item name="android:minHeight">@dimen/iconButtonSize</item>
+    </style>
+    <style name="Widget.AppTheme.IconButton"
+        parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/icon_button_tint</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/commonSpacingSmall</item>
+        <item name="android:paddingEnd">@dimen/commonSpacingSmall</item>
+        <item name="android:minWidth">@dimen/iconButtonSize</item>
+        <item name="android:minHeight">@dimen/iconButtonSize</item>
+    </style>
+    <style name="Widget.AppTheme.CheckButton"
+        parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textAllCaps">false</item>
+        <item name="iconTint">@color/like_checkbox_tint</item>
+        <item name="android:minWidth">@dimen/iconButtonSize</item>
+        <item name="android:minHeight">@dimen/iconButtonSize</item>
+        <item name="android:checkable"> true </item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:background"> @android:color/transparent </item>
+        <item name="android:textColor"> @color/colorGrey </item>
+    </style>
+
+    <style name="Widget.AppTheme.Viewing"
+        parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/icon_button_tint</item>
+        <item name="android:minWidth">@dimen/iconButtonSize</item>
+        <item name="android:minHeight">@dimen/iconButtonSize</item>
+        <item name="android:textColor"> @color/colorGrey </item>
+    </style>
+
+    <dimen name="iconButtonSize">48dp</dimen>
+    <dimen name="commonSpacingSmall">4dp</dimen>
+</resources>
