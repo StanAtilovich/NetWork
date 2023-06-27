@@ -1,4 +1,6 @@
 package ru.netology.network.ui.post
 
-class PostFeedFragment {
+import androidx.fragment.app.Fragment
+
+class PostFeedFragment : Fragment()   {
 }
