@@ -12,6 +12,16 @@
         <item name="android:minWidth">@dimen/iconButtonSize</item>
         <item name="android:minHeight">@dimen/iconButtonSize</item>
     </style>
+    <style name="Widget.AppTheme.AppBar" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/white</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+    </style>
+    <style name="Widget.AppTheme.LikeCheckBox" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/like_checkbox_tint</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
     <style name="Widget.AppTheme.IconButton"
         parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="iconTint">@color/icon_button_tint</item>
@@ -24,6 +34,11 @@
         <item name="android:minWidth">@dimen/iconButtonSize</item>
         <item name="android:minHeight">@dimen/iconButtonSize</item>
     </style>
+    <style name="Widget.AppTheme.DateTime" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="cardBackgroundColor">@color/part_button_tint</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+    </style>
     <style name="Widget.AppTheme.CheckButton"
         parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="android:textAllCaps">false</item>
@@ -34,6 +49,12 @@
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:background"> @android:color/transparent </item>
         <item name="android:textColor"> @color/colorGrey </item>
+    </style>
+    <style name="Widget.AppTheme.PartButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="backgroundTint">@color/part_button_tint</item>
+        <item name="iconTint">@color/white</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
     </style>
 
     <style name="Widget.AppTheme.Viewing"
@@ -46,4 +67,13 @@
 
     <dimen name="iconButtonSize">48dp</dimen>
     <dimen name="commonSpacingSmall">4dp</dimen>
+    <dimen name="icon_button_min_size">48dp</dimen>
+
+    <style name="Widget.AppTheme.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">5dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorSurface">#F4DCF8</item>
+        <item name="colorOnSurface">#F44336</item>
+    </style>
 </resources>

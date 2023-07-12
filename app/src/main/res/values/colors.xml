@@ -15,4 +15,5 @@
     <color name="Seashell">#FFF5EE</color>
     <color name="LightSkyBlue">#87CEFA</color>
     <color name="SkyBlue">#87CEEB</color>
+    <color name="divider_color">#070707</color>
 </resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/wall"
+        android:icon="@drawable/main"
+        android:title="@string/main"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/events"
+        android:icon="@drawable/event"
+        android:title="@string/events"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/posts"
+        android:title="@string/main_menu_posts"
+        app:showAsAction="never"
+        android:icon="@drawable/post"/>
+
+    <item
+        android:id="@+id/jobs"
+        android:title="@string/main_menu_jobs"
+        app:showAsAction="never"
+        android:icon="@drawable/baseline_work_24"/>
+
+    <item
+        android:id="@+id/signout"
+        android:title="@string/main_menu_sign_out"
+        app:showAsAction="never"
+        android:icon="@drawable/exit"/>
+</menu>

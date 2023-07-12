@@ -7,9 +7,114 @@
 
     <fragment
         android:id="@+id/postFeedFragment"
-        android:name="ru.netology.network.ui.post.PostFeedFragment"
-        android:label="@string/posts"
-        tools:layout="@layout/fragment_post_feed"
-        />
+        android:name="ru.netology.network.ui.activity.activity.PostNewFragment"
+        android:label="fragment_post_feed"
+        tools:layout="@layout/fragment_post_feed">
+        <action
+            android:id="@+id/action_postFeedFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_postFeedFragment_to_imagePreviewFragment"
+            app:destination="@+id/imagePreviewFragment" />
+        <action
+            android:id="@+id/action_postFeedFragment_to_loginFragment"
+            app:destination="@+id/loginFragment" />
+        <action
+            android:id="@+id/action_postFeedFragment_to_mapsPreviewFragment"
+            app:destination="@+id/mapsPreviewFragment" />
+        <action
+            android:id="@+id/action_postFeedFragment_to_feedEventFragment"
+            app:destination="@+id/feedEventFragment" />
+        <action
+            android:id="@+id/action_postFeedFragment_to_feedJobsFragment"
+            app:destination="@+id/feedJobsFragment" />
+        <action
+            android:id="@+id/action_postFeedFragment_to_wallFragment"
+            app:destination="@+id/wallFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="ru.netology.network.ui.activity.activity.NewEventFragment"
+        android:label="fragment_new_post"
+        tools:layout="@layout/fragment_new_post">
+        <action
+            android:id="@+id/action_newPostFragment_to_mapsNewMarkerFragment"
+            app:destination="@+id/mapsNewMarkerFragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/imagePreviewFragment"
+        android:name="ru.netology.network.ui.activity.activity.ImagePreviewFragment"
+        android:label="ImagePreviewFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ru.netology.network.ui.activity.activity.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/mapsPreviewFragment"
+        android:name="ru.netology.network.ui.activity.activity.mapsPreviewFragment"
+        android:label="mapsPreviewFragment" />
+    <fragment
+        android:id="@+id/mapsNewMarkerFragment"
+        android:name="ru.netology.network.ui.activity.activity.MapsNewMarkerFragment"
+        android:label="mapsNewMarkerFragment" />
+    <fragment
+        android:id="@+id/feedEventFragment"
+        android:name="ru.netology.network.ui.activity.activity.FeedEventFragment"
+        android:label="feedEventFragment" >
+    <action
+        android:id="@+id/action_feedEventFragment_to_mapsPreviewFragment"
+        app:destination="@+id/mapsPreviewFragment" />
+    <action
+        android:id="@+id/action_feedEventFragment_to_newEventFragment"
+        app:destination="@+id/newEventFragment" />
+</fragment>
+
+    <fragment
+        android:id="@+id/newEventFragment"
+        android:name="ru.netology.network.ui.activity.activity.NewEventFragment"
+        android:label="NewEventFragment" >
+        <action
+            android:id="@+id/action_newEventFragment_to_mapsNewMarkerFragment"
+            app:destination="@id/mapsNewMarkerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/feedJobsFragment"
+        android:name="ru.netology.network.ui.activity.activity.FeedJobFragment"
+        android:label="FeedJobsFragment" >
+        <action
+            android:id="@+id/action_feedJobsFragment_to_newJobFragment"
+            app:destination="@id/newJobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newJobFragment"
+        android:name="ru.netology.network.ui.activity.activity.NewJobFragment"
+        android:label="NewJobFragment" />
+    <fragment
+        android:id="@+id/wallFragment"
+        android:name="ru.netology.network.ui.activity.activity.WallFragment"
+        android:label="WallFragment" >
+        <action
+            android:id="@+id/action_wallFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_wallFragment_to_mapsPreviewFragment"
+            app:destination="@id/mapsPreviewFragment" />
+        <action
+            android:id="@+id/action_wallFragment_to_feedJobsFragment"
+            app:destination="@id/feedJobsFragment" />
+
+</fragment>
+
 
 </navigation>
