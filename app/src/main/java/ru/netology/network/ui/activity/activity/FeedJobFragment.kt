@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
 import ru.netology.network.databinding.FragmentNewJobBinding
 import ru.netology.network.databinding.JobsFeedBinding
@@ -18,7 +19,7 @@ import ru.netology.network.ui.activity.dto.Job
 import ru.netology.network.ui.activity.util.LongArg
 import ru.netology.network.ui.activity.viewmodel.AuthViewModel
 import ru.netology.network.ui.activity.viewmodel.PostViewModel
-
+@AndroidEntryPoint
 class FeedJobFragment : Fragment() {
     companion object {
         var Bundle.user_Id: Long by LongArg

@@ -21,10 +21,8 @@ import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.cast.framework.media.ImagePicker
 import com.google.android.material.snackbar.Snackbar
 import com.yandex.runtime.image.ImageProvider
-import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
 import ru.netology.network.databinding.FragmentNewEventBinding
 import ru.netology.network.ui.activity.activity.MapsNewMarkerFragment.Companion.latArg
@@ -39,6 +37,8 @@ import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class NewEventFragment : Fragment() {

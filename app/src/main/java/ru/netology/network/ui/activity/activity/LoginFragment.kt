@@ -14,8 +14,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.github.dhaval2404.imagepicker.ImagePicker
-import com.github.dhaval2404.imagepicker.constant.ImageProvider
+
+
+
 import com.google.android.material.snackbar.Snackbar
 import com.yandex.runtime.image.ImageProvider
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,7 +58,7 @@ class LoginFragment : Fragment() {
             checkBoxRegister.setOnClickListener {
                 name.isVisible = checkBoxRegister.isChecked
                 avatarImage.isVisible = checkBoxRegister.isChecked
-                avatarImage.setImageResource(R.mipmap.ic_avatar_1_round)
+                avatarImage.setImageResource(R.drawable.avatar)
             }
 
             login.afterTextChanged {
@@ -74,36 +75,36 @@ class LoginFragment : Fragment() {
                 )
             }
 
-            val pickPhotoLauncher =
-                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                    when (it.resultCode) {
-                        ImagePicker.RESULT_ERROR -> {
-                            Snackbar.make(
-                                binding.root,
-                                ImagePicker.getError(it.data),
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                        }
-                        Activity.RESULT_OK -> {
-                            val uri: Uri? = it.data?.data
-                            viewModelAuth.changeAvatar(uri, uri?.toFile())
-                        }
-                    }
-                }
+           val pickPhotoLauncher =
+               registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                   when (it.resultCode) {
+                       ImagePicker.RESULT_ERROR -> {
+                           Snackbar.make(
+                               binding.root,
+                               ImagePicker.getError(it.data),
+                               Snackbar.LENGTH_LONG
+                           ).show()
+                       }
+                       Activity.RESULT_OK -> {
+                           val uri: Uri? = it.data?.data
+                           viewModelAuth.changeAvatar(uri, uri?.toFile())
+                       }
+                   }
+               }
 
-            binding.avatarImage.setOnClickListener {
-                ImagePicker.with(this@LoginFragment)
-                    .crop()
-                    .compress(512)
-                    .provider(ImageProvider.GALLERY)
-                    .galleryMimeTypes(
-                        arrayOf(
-                            "image/png",
-                            "image/jpeg",
-                        )
-                    )
-                    .createIntent(pickPhotoLauncher::launch)
-            }
+          binding.avatarImage.setOnClickListener {
+              ImagePicker.with(this@LoginFragment)
+                  .crop()
+                  .compress(512)
+                  .provider(ImageProvider.GALLERY)
+                  .galleryMimeTypes(
+                      arrayOf(
+                          "image/png",
+                          "image/jpeg",
+                      )
+                  )
+                  .createIntent(pickPhotoLauncher::launch)
+          }
 
             button.setOnClickListener {
                 hideKeyboard(requireView())
@@ -136,13 +137,13 @@ class LoginFragment : Fragment() {
                     findNavController().navigateUp()
             }
 
-            viewModelAuth.photoAvatar.observe(viewLifecycleOwner) {
-                if (it.url == null) {
-                    avatarImage.setImageResource(R.mipmap.ic_avatar_1_round)
-                    return@observe
-                }
-                avatarImage.loadCircleCrop(it.url.toString())
-            }
+           viewModelAuth.photoAvatar.observe(viewLifecycleOwner) {
+               if (it.uri == null) {
+                   avatarImage.setImageResource(R.drawable.avatar)
+                   return@observe
+               }
+               avatarImage.loadCircleCrop(it.uri.toString())
+           }
 
             return root
         }

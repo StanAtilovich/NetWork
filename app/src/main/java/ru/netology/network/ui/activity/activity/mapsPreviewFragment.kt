@@ -13,10 +13,11 @@ import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.mapview.MapView
 import com.yandex.runtime.Runtime
 import com.yandex.runtime.image.ImageProvider
+import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
 import ru.netology.network.databinding.FragmentMapPreviewBinding
 import ru.netology.network.ui.activity.util.DoubleArg
-
+@AndroidEntryPoint
 class mapsPreviewFragment: Fragment() {
 
     companion object{

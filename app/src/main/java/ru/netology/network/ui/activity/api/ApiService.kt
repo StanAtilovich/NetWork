@@ -44,7 +44,6 @@ fun retrofit(client: OkHttpClient): Retrofit = Retrofit.Builder()
     .build()
 
 interface ApiService {
-    //==========POSTS=====================================================================
     @GET("posts")
     suspend fun getAll(): Response<List<PostResponse>>
 
@@ -66,7 +65,6 @@ interface ApiService {
     @Multipart
     @POST("media")
     suspend fun upload(@Part file: MultipartBody.Part): Response<MediaResponse>
-    //==========Authentication| Users===========================================================
     @FormUrlEncoded
     @POST("users/authentication")
     suspend fun userAuthentication(
@@ -97,7 +95,6 @@ interface ApiService {
 
     @GET("users")
     suspend fun getUsers(): Response<List<UserResponse>>
-    //==========Events===========================================================
     @GET("events")
     suspend fun getEvents(): Response<List<EventResponse>>
     @POST("events/{id}/likes")
@@ -112,10 +109,9 @@ interface ApiService {
     suspend fun nonPartEventById(@Path("id") id: Long): Response<EventResponse>
     @POST("events")
     suspend fun saveEvent(@Body eventRequest: EventRequest): Response<EventResponse>
-    //==========Wall=============================================================
     @GET("{author_id}/wall")
     suspend fun getPostsByAuthor(@Path("user_id") user_id: Long): Response<List<PostResponse>>
-    //==========Jobs=============================================================
+
     @POST("my/jobs")
     suspend fun saveJob(@Body jobRequest: JobRequest): Response<JobResponse>
     @DELETE("my/jobs/{job_id}")

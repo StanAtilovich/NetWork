@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
 import ru.netology.network.databinding.FragmentWallBinding
 import ru.netology.network.ui.activity.activity.FeedJobFragment.Companion.user_Id
@@ -23,6 +24,7 @@ import ru.netology.network.ui.activity.util.StringArg
 import ru.netology.network.ui.activity.view.loadCircleCrop
 import ru.netology.network.ui.activity.viewmodel.PostViewModel
 
+@AndroidEntryPoint
 class WallFragment : Fragment(){
     companion object {
         var Bundle.userId: Long by LongArg

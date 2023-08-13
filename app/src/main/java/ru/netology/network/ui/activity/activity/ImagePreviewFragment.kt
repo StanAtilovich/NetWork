@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.databinding.FragmentImageBinding
 import ru.netology.network.ui.activity.util.StringArg
 import ru.netology.network.ui.activity.view.load
-
+@AndroidEntryPoint
 class ImagePreviewFragment : Fragment() {
     companion object {
         var Bundle.textArg: String? by StringArg
@@ -26,7 +27,7 @@ class ImagePreviewFragment : Fragment() {
             container, false
         )
         fragmentBinding = binding
-        var url = arguments?.textArg
+        val url = arguments?.textArg
         if (url != null) binding.imageView.load(url)
         binding.back.setOnClickListener {
             findNavController().navigateUp()

@@ -2,7 +2,6 @@ package ru.netology.network.ui.activity.activity
 
 
 import android.app.Activity
-import android.app.usage.UsageEvents
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,16 +16,12 @@ import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.cast.framework.media.ImagePicker
 import com.google.android.material.snackbar.Snackbar
 import com.yandex.runtime.image.ImageProvider
 import ru.netology.network.R
-import ru.netology.network.databinding.FragmentEventFeedBinding
 import ru.netology.network.databinding.FragmentNewPostBinding
 import ru.netology.network.ui.activity.activity.MapsNewMarkerFragment.Companion.latArg
 import ru.netology.network.ui.activity.activity.MapsNewMarkerFragment.Companion.longArg
-import ru.netology.network.ui.activity.adapter.OnInteractionEventListener
-import ru.netology.network.ui.activity.dto.Event
 import ru.netology.network.ui.activity.util.AndroidUtils
 import ru.netology.network.ui.activity.view.load
 import ru.netology.network.ui.activity.viewmodel.PostViewModel
