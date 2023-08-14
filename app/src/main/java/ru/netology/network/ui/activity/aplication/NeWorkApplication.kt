@@ -1,7 +1,6 @@
 package ru.netology.network.ui.activity.aplication
 
 import android.app.Application
-import com.google.android.datatransport.BuildConfig
 import com.yandex.mapkit.MapKitFactory
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope

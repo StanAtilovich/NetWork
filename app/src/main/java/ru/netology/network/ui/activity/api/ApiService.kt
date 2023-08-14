@@ -1,6 +1,6 @@
 package ru.netology.network.ui.activity.api
 
-import com.google.android.datatransport.BuildConfig
+
 import okhttp3.Interceptor
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
