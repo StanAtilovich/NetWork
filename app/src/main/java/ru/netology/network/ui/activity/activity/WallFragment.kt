@@ -25,13 +25,14 @@ import ru.netology.network.ui.activity.view.loadCircleCrop
 import ru.netology.network.ui.activity.viewmodel.PostViewModel
 
 @AndroidEntryPoint
-class WallFragment : Fragment(){
+class WallFragment : Fragment() {
     companion object {
         var Bundle.userId: Long by LongArg
         var Bundle.userName: String? by StringArg
         var Bundle.userPosition: String? by StringArg
         var Bundle.userAvatar: String? by StringArg
     }
+
     private val viewModel: PostViewModel by viewModels(
         ownerProducer = ::requireParentFragment,
     )
@@ -100,11 +101,12 @@ class WallFragment : Fragment(){
             }
 
             override fun onPreviewImage(post: Post) {
-                findNavController().navigate(R.id.action_postFeedFragment_to_imagePreviewFragment
+                findNavController().navigate(
+                    R.id.action_postFeedFragment_to_imagePreviewFragment,
                     Bundle().apply {
                         textArg = post.attachment?.url
-                    })
-
+                    }
+                )
             }
         })
         binding.list.adapter = adapter

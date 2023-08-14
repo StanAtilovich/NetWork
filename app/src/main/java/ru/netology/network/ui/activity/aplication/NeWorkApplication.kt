@@ -6,8 +6,10 @@ import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import ru.netology.network.BuildConfig
 import ru.netology.network.ui.activity.auth.AppAuth
 import javax.inject.Inject
+
 
 @HiltAndroidApp
 class NeWorkApplication : Application() {

@@ -18,7 +18,6 @@ import androidx.navigation.fragment.findNavController
 
 
 import com.google.android.material.snackbar.Snackbar
-import com.yandex.runtime.image.ImageProvider
 import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
 import ru.netology.network.databinding.FragmentLoginBinding
@@ -96,7 +95,7 @@ class LoginFragment : Fragment() {
               ImagePicker.with(this@LoginFragment)
                   .crop()
                   .compress(512)
-                  .provider(ImageProvider.GALLERY)
+                  .galleryOnly()
                   .galleryMimeTypes(
                       arrayOf(
                           "image/png",

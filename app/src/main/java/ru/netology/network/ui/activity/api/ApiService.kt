@@ -1,6 +1,5 @@
 package ru.netology.network.ui.activity.api
 
-
 import okhttp3.Interceptor
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -16,6 +15,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import ru.netology.network.BuildConfig
 import ru.netology.network.ui.activity.dto.AuthenticationResponse
 import ru.netology.network.ui.activity.dto.EventRequest
 import ru.netology.network.ui.activity.dto.EventResponse
@@ -26,6 +26,7 @@ import ru.netology.network.ui.activity.dto.Post
 import ru.netology.network.ui.activity.dto.PostRequest
 import ru.netology.network.ui.activity.dto.PostResponse
 import ru.netology.network.ui.activity.dto.UserResponse
+
 
 private const val BASE_URL = "${BuildConfig.BASE_URL}/api/"
 
