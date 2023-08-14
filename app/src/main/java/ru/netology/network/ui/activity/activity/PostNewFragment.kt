@@ -16,6 +16,7 @@ import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.snackbar.Snackbar
 import com.yandex.runtime.image.ImageProvider
 import ru.netology.network.R
@@ -131,7 +132,7 @@ class PostNewFragment : Fragment() {
             ImagePicker.with(this)
                 .crop()
                 .compress(2048)
-                .provider(ImageProvider.GALLERY)
+                .galleryOnly()
                 .galleryMimeTypes(
                     arrayOf(
                         "image/png",
@@ -145,7 +146,7 @@ class PostNewFragment : Fragment() {
             ImagePicker.with(this)
                 .crop()
                 .compress(2048)
-                .provider(ImageProvider.CAMERA)
+                .cameraOnly()
                 .createIntent(pickPhotoLauncher::launch)
         }
 
