@@ -34,7 +34,6 @@ class WallFragment : Fragment() {
     }
 
     private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment,
     )
 
     override fun onCreateView(

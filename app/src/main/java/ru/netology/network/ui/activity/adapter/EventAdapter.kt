@@ -2,11 +2,9 @@ package ru.netology.network.ui.activity.adapter
 
 import android.net.Uri
 import android.os.Build
-import android.os.Build.VERSION_CODES
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
 import android.widget.MediaController
 import android.widget.PopupMenu
 import androidx.annotation.RequiresApi
@@ -108,6 +106,7 @@ class EventViewHolder(
                     AttachmentVideo.visibility = View.GONE
                     AttachmentImage.load(event.attachment.url)
                 }
+
                 AttachmentType.VIDEO -> {
                     AttachmentFrame.visibility = View.VISIBLE
                     AttachmentImage.visibility = View.GONE
@@ -126,6 +125,7 @@ class EventViewHolder(
                     }
 
                 }
+
                 AttachmentType.AUDIO -> {
                     AttachmentFrame.visibility = View.VISIBLE
                     AttachmentImage.visibility = View.GONE
@@ -142,6 +142,7 @@ class EventViewHolder(
                         }
                     }
                 }
+
                 null -> {
                     AttachmentFrame.visibility = View.GONE
                 }
@@ -159,6 +160,7 @@ class EventViewHolder(
                                 OnInteractionEventListener.onRemove(event)
                                 true
                             }
+
                             R.id.edit_content -> {
                                 OnInteractionEventListener.onEdit(event)
                                 true

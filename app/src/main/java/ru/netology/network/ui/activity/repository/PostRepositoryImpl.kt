@@ -1,29 +1,14 @@
 package ru.netology.network.ui.activity.repository
 
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import ru.netology.network.ui.activity.api.ApiService
 import ru.netology.network.ui.activity.auth.AuthState
-import ru.netology.network.ui.activity.dao.EventDao
-import ru.netology.network.ui.activity.dao.JobDao
-import ru.netology.network.ui.activity.dao.PostDao
-import ru.netology.network.ui.activity.dao.UserDao
-import ru.netology.network.ui.activity.dto.Attachment
-import ru.netology.network.ui.activity.dto.Event
-import ru.netology.network.ui.activity.dto.EventRequest
-import ru.netology.network.ui.activity.dto.Job
-import ru.netology.network.ui.activity.dto.JobRequest
-import ru.netology.network.ui.activity.dto.MediaRequest
-import ru.netology.network.ui.activity.dto.MediaResponse
-import ru.netology.network.ui.activity.dto.Post
-import ru.netology.network.ui.activity.dto.PostRequest
-import ru.netology.network.ui.activity.dto.Users
-import ru.netology.network.ui.activity.entity.EventEntity
-import ru.netology.network.ui.activity.entity.toDto
-import ru.netology.network.ui.activity.entity.toEntity
+import ru.netology.network.ui.activity.dao.*
+import ru.netology.network.ui.activity.dto.*
+import ru.netology.network.ui.activity.entity.*
 import ru.netology.network.ui.activity.enumeration.AttachmentType
 import ru.netology.network.ui.activity.error.ApiError
 import ru.netology.network.ui.activity.error.AppError
@@ -44,7 +29,7 @@ class PostRepositoryImpl @Inject constructor(
     private val userdao: UserDao,
     private val jobdao: JobDao,
     private val apiService: ApiService
-): PostRepository {
+) : PostRepository {
     override val posts = postdao.getPosts()
         .map(List<PostEntity>::toDto)
         .flowOn(Dispatchers.Default)
@@ -161,6 +146,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun upload(upload: MediaRequest): MediaResponse {
         try {
             val media = MultipartBody.Part.createFormData(
@@ -179,6 +165,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun save(post: Post) {
         try {
             val postRequest = PostRequest(
@@ -234,6 +221,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun saveWithAttachment(post: Post, upload: MediaRequest) {
         try {
             val media = upload(upload)
@@ -248,6 +236,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun removeById(id: Long) {
         try {
             postdao.removeById(id)
@@ -261,6 +250,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun likeById(id: Long) {
         try {
             val response = apiService.getById(id)
@@ -312,6 +302,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun userAuthentication(login: String, pass: String): AuthState {
         try {
             val authResponse = apiService.userAuthentication(login, pass)
@@ -338,6 +329,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun userRegistration(
         login: String,
         pass: String,
@@ -361,6 +353,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun userRegistrationWithAvatar(
         login: String,
         pass: String,
@@ -389,6 +382,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun getEvents() {
         try {
             val response = apiService.getEvents()
@@ -511,6 +505,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun saveEventWithAttachment(event: Event, upload: MediaRequest) {
         try {
             val media = upload(upload)
@@ -525,6 +520,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun likeEventById(id: Long, likedByMe: Boolean) {
         try {
             if (likedByMe) {
@@ -604,6 +600,7 @@ class PostRepositoryImpl @Inject constructor(
             throw ru.netology.network.ui.activity.error.UnknownError
         }
     }
+
     override suspend fun removeEventById(id: Long) {
         try {
             eventdao.removeById(id)
@@ -750,7 +747,7 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun saveJob(userId : Long, job : Job) {
+    override suspend fun saveJob(userId: Long, job: Job) {
         try {
             val jobRequest = JobRequest(
                 job.id,

@@ -30,7 +30,6 @@ import java.util.Locale
 class NewJobFragment : Fragment() {
 
     private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment,
     )
 
     private var fragmentBinding: FragmentNewJobBinding? = null
@@ -79,6 +78,7 @@ class NewJobFragment : Fragment() {
                 }
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -113,7 +113,7 @@ class NewJobFragment : Fragment() {
                 )
             )
             editFinishDate.setText(
-                if (editJob?.finish != null )
+                if (editJob?.finish != null)
                     SimpleDateFormat(dateFormat).format(
                         Date.from(
                             Instant.from(

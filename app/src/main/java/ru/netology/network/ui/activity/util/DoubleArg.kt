@@ -4,7 +4,7 @@ import android.os.Bundle
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-object DoubleArg: ReadWriteProperty<Bundle, Double> {
+object DoubleArg : ReadWriteProperty<Bundle, Double> {
 
     override fun setValue(thisRef: Bundle, property: KProperty<*>, value: Double) {
         thisRef.putDouble(property.name, value)

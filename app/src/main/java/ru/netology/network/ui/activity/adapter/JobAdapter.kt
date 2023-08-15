@@ -15,7 +15,6 @@ import ru.netology.network.ui.activity.dto.Job
 import ru.netology.network.ui.activity.util.convertString2DateTime2String
 
 
-
 interface OnInteractionJobListener {
     fun onEdit(job: Job) {}
     fun onRemove(job: Job) {}
@@ -66,19 +65,21 @@ class JobViewHolder(
                 link.visibility = View.VISIBLE
             }
             menuJob.visibility = if (job.ownedByMe) View.VISIBLE else View.INVISIBLE
-            menuJob.setOnClickListener{
+            menuJob.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)
-                    setOnMenuItemClickListener { item->
-                        when(item.itemId){
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
                             R.id.remove -> {
                                 OnInteractionJobListener.onRemove(job)
                                 true
                             }
+
                             R.id.edit_content -> {
                                 OnInteractionJobListener.onEdit(job)
                                 true
                             }
+
                             else -> false
                         }
                     }

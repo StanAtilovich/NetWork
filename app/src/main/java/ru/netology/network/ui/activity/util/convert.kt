@@ -22,7 +22,7 @@ fun convertString2Date2String(dateString: String): String {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun convertDateTime2ISO_Instant(date : String, time : String) : String {
+fun convertDateTime2ISO_Instant(date: String, time: String): String {
     val string2date = SimpleDateFormat("dd.MM.yyyy HH:mm").parse("$date $time")
     val date2string = string2date.toInstant().toString()
     return date2string

@@ -21,14 +21,15 @@ interface PostRepository {
     suspend fun saveWithAttachment(post: Post, upload: MediaRequest)
     suspend fun removeById(id: Long)
     suspend fun likeById(id: Long)
-   suspend fun userAuthentication(login: String, pass: String): AuthState
-   suspend fun userRegistration(login: String, pass: String, name: String): AuthState
+    suspend fun userAuthentication(login: String, pass: String): AuthState
+    suspend fun userRegistration(login: String, pass: String, name: String): AuthState
     suspend fun userRegistrationWithAvatar(
         login: String,
         pass: String,
         name: String,
         avatar: MediaRequest
     ): AuthState
+
     suspend fun getUsers()
     suspend fun getEvents()
     suspend fun saveEvent(event: Event)

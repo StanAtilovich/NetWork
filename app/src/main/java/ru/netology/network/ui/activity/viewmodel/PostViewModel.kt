@@ -33,7 +33,6 @@ import java.io.File
 import javax.inject.Inject
 
 
-
 private val emptyPost = Post(
     id = 0,
     authorId = 0,
@@ -476,12 +475,12 @@ class PostViewModel @Inject constructor(
         editeJob.value = editeJob.value?.copy(position = text)
     }
 
-    fun changeLinkJob(link: String){
+    fun changeLinkJob(link: String) {
         val text = if (link.isEmpty())
             null
         else
             link.trim()
-        if (editeJob.value?.link == text){
+        if (editeJob.value?.link == text) {
             return
         }
         editeJob.value = editeJob.value?.copy(link = text)
@@ -490,23 +489,22 @@ class PostViewModel @Inject constructor(
     fun removeJobById(id: Long) = viewModelScope.launch {
         try {
             repository.removeJobById(id)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
         }
     }
 
-    fun refreshJobs(userId: Long, currentUserId: Long)= viewModelScope.launch {
+    fun refreshJobs(userId: Long, currentUserId: Long) = viewModelScope.launch {
         try {
             _dataState.value = FeedModelState(refreshing = true)
             repository.getJobs(userId, currentUserId)
             _dataState.value = FeedModelState(error = true)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
         }
     }
 
 }
-
 
 
 private val noPhoto = PhotoModel()

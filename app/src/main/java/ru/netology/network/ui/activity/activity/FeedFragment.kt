@@ -21,7 +21,6 @@ import ru.netology.network.ui.activity.activity.mapsPreviewFragment.Companion.do
 import ru.netology.network.ui.activity.activity.mapsPreviewFragment.Companion.doubleArg2
 import ru.netology.network.ui.activity.adapter.OnInteractionListener
 import ru.netology.network.ui.activity.adapter.PostAdapter
-import ru.netology.network.ui.activity.dto.Event
 import ru.netology.network.ui.activity.dto.Post
 import ru.netology.network.ui.activity.viewmodel.PostViewModel
 
@@ -29,7 +28,6 @@ import ru.netology.network.ui.activity.viewmodel.PostViewModel
 @AndroidEntryPoint
 class FeedFragment : Fragment() {
     private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment
     )
 
 

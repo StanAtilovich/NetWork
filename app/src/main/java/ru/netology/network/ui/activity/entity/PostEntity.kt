@@ -16,18 +16,18 @@ data class PostEntity(
     val authorId: Long,
     val author: String,
     val authorAvatar: String? = null,
-    val authorJob : String? = null,
+    val authorJob: String? = null,
     val content: String,
     val published: String,
     @Embedded
     var coords: CoordEmbeddable?,
     val link: String? = null,
     @TypeConverters(Converters::class)
-    val likeOwnerIds:  List<Long>?,
+    val likeOwnerIds: List<Long>?,
     @TypeConverters(Converters::class)
-    val mentionIds:  List<Long>?,
+    val mentionIds: List<Long>?,
     @TypeConverters(Converters::class)
-    val mentionList : List<String>?,
+    val mentionList: List<String>?,
     val mentionedMe: Boolean = false,
     val likedByMe: Boolean = false,
     @Embedded

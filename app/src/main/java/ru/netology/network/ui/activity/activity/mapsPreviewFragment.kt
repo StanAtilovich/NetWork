@@ -17,13 +17,15 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
 import ru.netology.network.databinding.FragmentMapPreviewBinding
 import ru.netology.network.ui.activity.util.DoubleArg
-@AndroidEntryPoint
-class mapsPreviewFragment: Fragment() {
 
-    companion object{
+@AndroidEntryPoint
+class mapsPreviewFragment : Fragment() {
+
+    companion object {
         var Bundle.doubleArg1: Double by DoubleArg
         var Bundle.doubleArg2: Double by DoubleArg
     }
+
     private var mapView: MapView? = null
 
     override fun onCreateView(
@@ -36,7 +38,7 @@ class mapsPreviewFragment: Fragment() {
         mapView = binding.mapview
 
         val markerLatitude = (arguments?.doubleArg1 ?: 0.0).toDouble()
-        val markerLongitude =(arguments?.doubleArg2 ?: 0.0).toDouble()
+        val markerLongitude = (arguments?.doubleArg2 ?: 0.0).toDouble()
 
         mapView?.getMap()?.move(
             CameraPosition(Point(markerLatitude, markerLongitude), 15.0f, 0.0f, 0.0f),

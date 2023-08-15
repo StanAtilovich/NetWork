@@ -18,7 +18,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.snackbar.Snackbar
-import com.yandex.runtime.image.ImageProvider
+import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
 import ru.netology.network.databinding.FragmentNewPostBinding
 import ru.netology.network.ui.activity.activity.MapsNewMarkerFragment.Companion.latArg
@@ -27,10 +27,10 @@ import ru.netology.network.ui.activity.util.AndroidUtils
 import ru.netology.network.ui.activity.view.load
 import ru.netology.network.ui.activity.viewmodel.PostViewModel
 
-
+@AndroidEntryPoint
 class PostNewFragment : Fragment() {
     private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment,
+
     )
 
     private var fragmentBinding: FragmentNewPostBinding? = null
@@ -58,9 +58,7 @@ class PostNewFragment : Fragment() {
                         )
                         viewModel.savePosts()
                         AndroidUtils.hideKeyboard(requireView())
-                    }
-                    else
-                    {
+                    } else {
                         Toast.makeText(
                             context,
                             getString(R.string.new_post_empty_content),
@@ -72,6 +70,7 @@ class PostNewFragment : Fragment() {
                 }
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -91,16 +90,20 @@ class PostNewFragment : Fragment() {
         val editPost = viewModel.getEditPost()
         binding.editContent.setText(editPost?.content)
         binding.editLink.setText(editPost?.link)
-        binding.editMentions.setText(editPost?.mentionIds?.joinToString(", ",
-            "",
-            "",
-            -1,
-            "...",
-            null))
+        binding.editMentions.setText(
+            editPost?.mentionIds?.joinToString(
+                ", ",
+                "",
+                "",
+                -1,
+                "...",
+                null
+            )
+        )
 
         val lat = editPost?.coords?.lat
         val long = editPost?.coords?.long
-        if (lat!=null && long!=null)
+        if (lat != null && long != null)
             viewModel.changeCoordsFromMap(lat, long)
         val attachment = editPost?.attachment
         if (attachment != null) viewModel.changePhoto(Uri.parse(attachment.url), null)
@@ -121,6 +124,7 @@ class PostNewFragment : Fragment() {
                             Snackbar.LENGTH_LONG
                         ).show()
                     }
+
                     Activity.RESULT_OK -> {
                         val uri: Uri? = it.data?.data
                         viewModel.changePhoto(uri, uri?.toFile())

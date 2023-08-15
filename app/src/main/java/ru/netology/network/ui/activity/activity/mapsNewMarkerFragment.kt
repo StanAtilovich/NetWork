@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.PermissionChecker.checkPermission
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -58,7 +57,6 @@ class MapsNewMarkerFragment : Fragment(), UserLocationObjectListener, CameraList
     private var followUserLocation = false
 
     private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment,
     )
 
     private var fragmentBinding: FragmentMapNewMarkerBinding? = null
@@ -68,7 +66,8 @@ class MapsNewMarkerFragment : Fragment(), UserLocationObjectListener, CameraList
         setHasOptionsMenu(true)
     }
 
-    @Deprecated("Deprecated in Java",
+    @Deprecated(
+        "Deprecated in Java",
         ReplaceWith("inflater.inflate(R.menu.new_marker, menu)", "ru.netology.network.R")
     )
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

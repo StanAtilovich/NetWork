@@ -16,25 +16,25 @@ data class EventEntity(
     val authorId: Long,
     val author: String,
     val authorAvatar: String? = null,
-    val authorJob : String? = null,
+    val authorJob: String? = null,
     val content: String,
     val datetime: String,
     val published: String,
     @Embedded
     var coords: CoordEmbeddable?,
-    val type : EventType,
+    val type: EventType,
     @TypeConverters(Converters::class)
-    val likeOwnerIds:  List<Long>?,
+    val likeOwnerIds: List<Long>?,
     val likedByMe: Boolean = false,
     @TypeConverters(Converters::class)
-    val speakerIds : List<Long>?,
+    val speakerIds: List<Long>?,
     @TypeConverters(Converters::class)
-    val speakerList : List<String>?,
+    val speakerList: List<String>?,
     @TypeConverters(Converters::class)
-    val participantsIds : List<Long>?,
+    val participantsIds: List<Long>?,
     @TypeConverters(Converters::class)
-    val participantsList : List<String>?,
-    val participatedByMe : Boolean,
+    val participantsList: List<String>?,
+    val participatedByMe: Boolean,
     @Embedded
     var attachment: AttachmentEmbeddable?,
     val link: String? = null,

@@ -11,14 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
-import ru.netology.network.databinding.FragmentNewJobBinding
 import ru.netology.network.databinding.JobsFeedBinding
 import ru.netology.network.ui.activity.adapter.JobAdapter
 import ru.netology.network.ui.activity.adapter.OnInteractionJobListener
 import ru.netology.network.ui.activity.dto.Job
 import ru.netology.network.ui.activity.util.LongArg
-import ru.netology.network.ui.activity.viewmodel.AuthViewModel
 import ru.netology.network.ui.activity.viewmodel.PostViewModel
+
 @AndroidEntryPoint
 class FeedJobFragment : Fragment() {
     companion object {
@@ -26,7 +25,7 @@ class FeedJobFragment : Fragment() {
     }
 
     private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment
+
     )
 
     override fun onCreateView(
@@ -39,11 +38,11 @@ class FeedJobFragment : Fragment() {
         val currentUser = viewModel.getCurrentUser()
         viewModel.loadJobs(userId, currentUser)
         if (currentUser == userId)
-            binding.fab.visibility =View.VISIBLE
+            binding.fab.visibility = View.VISIBLE
         else
             binding.fab.visibility = View.GONE
 
-        val adapter = JobAdapter(object : OnInteractionJobListener{
+        val adapter = JobAdapter(object : OnInteractionJobListener {
             override fun onEdit(job: Job) {
                 viewModel.editJob(job)
                 findNavController().navigate(R.id.action_feedJobsFragment_to_newJobFragment)
@@ -55,25 +54,23 @@ class FeedJobFragment : Fragment() {
         })
         binding.list.adapter = adapter
 
-        viewModel.dataState.observe(viewLifecycleOwner){
-            state ->
+        viewModel.dataState.observe(viewLifecycleOwner) { state ->
             binding.progress.isVisible = state.loading
             binding.swiperefresh.isRefreshing = state.refreshing
-            if (state.error){
+            if (state.error) {
                 Snackbar.make(binding.root, R.string.error_load, Snackbar.LENGTH_LONG)
-                    .setAction(R.string.retry){viewModel.loadEvents()}
+                    .setAction(R.string.retry) { viewModel.loadEvents() }
                     .show()
             }
         }
-        viewModel.dataJobs.observe(viewLifecycleOwner){
-            state ->
+        viewModel.dataJobs.observe(viewLifecycleOwner) { state ->
             adapter.submitList(state.jobs.filter {
                 it.userId == userId
             })
             binding.emptyText.isVisible = state.empty
         }
         binding.swiperefresh.setOnRefreshListener {
-            viewModel.refreshJobs(userId,currentUser)
+            viewModel.refreshJobs(userId, currentUser)
         }
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_feedJobsFragment_to_newJobFragment)

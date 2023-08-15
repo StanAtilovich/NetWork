@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.databinding.FragmentImageBinding
 import ru.netology.network.ui.activity.util.StringArg
 import ru.netology.network.ui.activity.view.load
+
 @AndroidEntryPoint
 class ImagePreviewFragment : Fragment() {
     companion object {

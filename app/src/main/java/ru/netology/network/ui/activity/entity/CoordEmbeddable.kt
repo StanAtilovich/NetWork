@@ -4,8 +4,8 @@ import ru.netology.network.ui.activity.dto.Coordinates
 
 
 data class CoordEmbeddable(
-    val latitude : String?,
-    val longitude : String?,
+    val latitude: String?,
+    val longitude: String?,
 ) {
     fun toDto() =
         Coordinates(latitude, longitude)

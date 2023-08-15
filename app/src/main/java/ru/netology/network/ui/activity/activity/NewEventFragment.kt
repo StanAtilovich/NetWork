@@ -23,12 +23,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.snackbar.Snackbar
-import com.yandex.runtime.image.ImageProvider
 import ru.netology.network.R
 import ru.netology.network.databinding.FragmentNewEventBinding
 import ru.netology.network.ui.activity.activity.MapsNewMarkerFragment.Companion.latArg
 import ru.netology.network.ui.activity.activity.MapsNewMarkerFragment.Companion.longArg
-
 import ru.netology.network.ui.activity.enumeration.EventType
 import ru.netology.network.ui.activity.util.AndroidUtils
 import ru.netology.network.ui.activity.view.load
@@ -44,7 +42,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class NewEventFragment : Fragment() {
     private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment
     )
     private var fragmentBinding: FragmentNewEventBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,6 +90,7 @@ class NewEventFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -206,6 +204,7 @@ class NewEventFragment : Fragment() {
                             Snackbar.LENGTH_LONG
                         ).show()
                     }
+
                     Activity.RESULT_OK -> {
                         val uri: Uri? = it.data?.data
                         viewModel.changePhoto(uri, uri?.toFile())

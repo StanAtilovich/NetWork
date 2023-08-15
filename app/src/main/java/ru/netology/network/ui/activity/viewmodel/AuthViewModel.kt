@@ -51,31 +51,32 @@ class AuthViewModel @Inject constructor(
     fun userAuthentication(login: String, password: String) = viewModelScope.launch {
         try {
             _loginForm.value = LoginFormState(isLoading = true)
-            val acount = repository.userAuthentication(login,password)
-            auth.setAuth(acount.id, acount.token,acount.name)
+            val acount = repository.userAuthentication(login, password)
+            auth.setAuth(acount.id, acount.token, acount.name)
             _loginForm.value = LoginFormState(isDataValid = true)
         } catch (e: Exception) {
             _loginForm.value = LoginFormState(isError = true, isDataValid = true)
         }
     }
 
-    fun userRegistration(login: String,password: String,name: String)= viewModelScope.launch {
+    fun userRegistration(login: String, password: String, name: String) = viewModelScope.launch {
         try {
             _loginForm.value = LoginFormState(isLoading = true)
-            val acount = when(_photoAvatar.value){
-                noPhotoAvatar -> repository.userRegistration(login,password,name)
-                else -> _photoAvatar.value?.file?.let {
-                    file -> repository.userRegistrationWithAvatar(login,password,name, MediaRequest(file))
+            val acount = when (_photoAvatar.value) {
+                noPhotoAvatar -> repository.userRegistration(login, password, name)
+                else -> _photoAvatar.value?.file?.let { file ->
+                    repository.userRegistrationWithAvatar(login, password, name, MediaRequest(file))
                 }
             }
-            if (acount != null){
+            if (acount != null) {
                 auth.setAuth(acount.id, acount.token, acount.name)
             }
             _loginForm.value = LoginFormState(isDataValid = true)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             _loginForm.value = LoginFormState(isError = true, isDataValid = true)
         }
     }
+
     fun changeAvatar(uri: Uri?, file: File?) {
         _photoAvatar.value = PhotoModel(uri, file)
     }

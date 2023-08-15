@@ -15,8 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
-
-
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
@@ -25,7 +23,6 @@ import ru.netology.network.ui.activity.util.AndroidUtils.Companion.hideKeyboard
 import ru.netology.network.ui.activity.view.afterTextChanged
 import ru.netology.network.ui.activity.view.loadCircleCrop
 import ru.netology.network.ui.activity.viewmodel.AuthViewModel
-import ru.netology.network.ui.activity.viewmodel.PostViewModel
 
 
 @AndroidEntryPoint
@@ -33,9 +30,6 @@ class LoginFragment : Fragment() {
 
     private var fragmentBinding: FragmentLoginBinding? = null
 
-    private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment,
-    )
 
     private val viewModelAuth: AuthViewModel by viewModels()
 
@@ -74,36 +68,37 @@ class LoginFragment : Fragment() {
                 )
             }
 
-           val pickPhotoLauncher =
-               registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                   when (it.resultCode) {
-                       ImagePicker.RESULT_ERROR -> {
-                           Snackbar.make(
-                               binding.root,
-                               ImagePicker.getError(it.data),
-                               Snackbar.LENGTH_LONG
-                           ).show()
-                       }
-                       Activity.RESULT_OK -> {
-                           val uri: Uri? = it.data?.data
-                           viewModelAuth.changeAvatar(uri, uri?.toFile())
-                       }
-                   }
-               }
+            val pickPhotoLauncher =
+                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                    when (it.resultCode) {
+                        ImagePicker.RESULT_ERROR -> {
+                            Snackbar.make(
+                                binding.root,
+                                ImagePicker.getError(it.data),
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
 
-          binding.avatarImage.setOnClickListener {
-              ImagePicker.with(this@LoginFragment)
-                  .crop()
-                  .compress(512)
-                  .galleryOnly()
-                  .galleryMimeTypes(
-                      arrayOf(
-                          "image/png",
-                          "image/jpeg",
-                      )
-                  )
-                  .createIntent(pickPhotoLauncher::launch)
-          }
+                        Activity.RESULT_OK -> {
+                            val uri: Uri? = it.data?.data
+                            viewModelAuth.changeAvatar(uri, uri?.toFile())
+                        }
+                    }
+                }
+
+            binding.avatarImage.setOnClickListener {
+                ImagePicker.with(this@LoginFragment)
+                    .crop()
+                    .compress(512)
+                    .galleryOnly()
+                    .galleryMimeTypes(
+                        arrayOf(
+                            "image/png",
+                            "image/jpeg",
+                        )
+                    )
+                    .createIntent(pickPhotoLauncher::launch)
+            }
 
             button.setOnClickListener {
                 hideKeyboard(requireView())
@@ -136,13 +131,13 @@ class LoginFragment : Fragment() {
                     findNavController().navigateUp()
             }
 
-           viewModelAuth.photoAvatar.observe(viewLifecycleOwner) {
-               if (it.uri == null) {
-                   avatarImage.setImageResource(R.drawable.avatar)
-                   return@observe
-               }
-               avatarImage.loadCircleCrop(it.uri.toString())
-           }
+            viewModelAuth.photoAvatar.observe(viewLifecycleOwner) {
+                if (it.uri == null) {
+                    avatarImage.setImageResource(R.drawable.avatar)
+                    return@observe
+                }
+                avatarImage.loadCircleCrop(it.uri.toString())
+            }
 
             return root
         }

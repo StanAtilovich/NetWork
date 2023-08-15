@@ -22,7 +22,6 @@ import ru.netology.network.ui.activity.viewmodel.PostViewModel
 @AndroidEntryPoint
 class FeedEventFragment : Fragment() {
     private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment
     )
 
     override fun onCreateView(
@@ -70,7 +69,7 @@ class FeedEventFragment : Fragment() {
                     .show()
             }
         }
-        viewModel.dataEvents.observe(viewLifecycleOwner){state ->
+        viewModel.dataEvents.observe(viewLifecycleOwner) { state ->
             adapter.submitList(state.events)
             binding.emptyText.isVisible = state.empty
         }

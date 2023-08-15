@@ -19,6 +19,7 @@ val coordinateCheb = Point(56.1432000, 47.2489000)
 
 val dateFormat = "dd.MM.yyyy"
 val timeFormat = "HH:mm"
+
 @AndroidEntryPoint
 class AppActivity : AppCompatActivity(R.layout.activity_main) {
     @Inject
@@ -74,10 +75,12 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
                     })
                 true
             }
+
             R.id.signout -> {
                 auth.removeAuth()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
