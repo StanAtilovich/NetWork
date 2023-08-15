@@ -1,7 +1,6 @@
 package ru.netology.network.ui.activity.viewmodel
 
 import android.net.Uri
-import android.nfc.tech.IsoDep
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +17,7 @@ import ru.netology.network.ui.activity.model.PhotoModel
 import ru.netology.network.ui.activity.repository.PostRepository
 import java.io.File
 import javax.inject.Inject
+
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(

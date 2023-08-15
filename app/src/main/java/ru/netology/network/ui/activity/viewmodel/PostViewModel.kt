@@ -2,7 +2,6 @@ package ru.netology.network.ui.activity.viewmodel
 
 import android.net.Uri
 import android.os.Build
-import android.os.Build.VERSION_CODES
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,10 +9,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -33,7 +30,6 @@ import ru.netology.network.ui.activity.repository.PostRepository
 import ru.netology.network.ui.activity.util.SingleLiveEvent
 import ru.netology.network.ui.activity.util.convertDateTime2ISO_Instant
 import java.io.File
-import java.text.FieldPosition
 import javax.inject.Inject
 
 
