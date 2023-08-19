@@ -46,7 +46,7 @@ class FeedEventFragment : Fragment() {
             }
 
             override fun onPreviewMap(event: Event) {
-                if (event.coords != null && event.coords.lat != null && event.coords.long != null) {
+                if (event.coords?.lat != null && event.coords.long != null) {
                     findNavController().navigate(R.id.action_feedEventFragment_to_mapsPreviewFragment,
                         Bundle().apply
                         {

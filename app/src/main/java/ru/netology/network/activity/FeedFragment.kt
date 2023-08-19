@@ -49,7 +49,7 @@ class FeedFragment : Fragment() {
             }
 
             override fun onPreviewMap(post: Post) {
-                if (post.coords != null && post.coords.lat != null && post.coords.long != null) {
+                if (post.coords?.lat != null && post.coords.long != null) {
                     findNavController().navigate(R.id.action_postFeedFragment_to_mapsPreviewFragment,
                         Bundle().apply {
                             doubleArg1 = post.coords.lat.toDouble()

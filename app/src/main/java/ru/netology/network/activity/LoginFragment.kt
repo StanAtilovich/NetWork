@@ -121,7 +121,7 @@ class LoginFragment : Fragment() {
                 button.isEnabled = state.isDataValid
                 loading.isVisible = state.isLoading
                 if (state.isError) {
-                    Toast.makeText(context, "Ошибка при авторизации", Toast.LENGTH_LONG)
+                    Toast.makeText(context, R.string.authorization_error, Toast.LENGTH_LONG)
                         .show()
                 }
             }

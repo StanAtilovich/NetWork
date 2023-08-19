@@ -72,4 +72,5 @@
     <string name="new_job_empty_position">необходимо заполнить должность</string>
     <string name="new_post_empty_content">Заполните содержимое поста</string>
     <string name="error_loading">Не удалось загрузить данные</string>
+    <string name="authorization_error">Ошибка при авторизации</string>
 </resources>

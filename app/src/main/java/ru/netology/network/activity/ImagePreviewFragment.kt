@@ -22,7 +22,7 @@ class ImagePreviewFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentImageBinding.inflate(
             inflater,
             container, false

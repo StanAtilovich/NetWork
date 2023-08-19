@@ -39,7 +39,7 @@ class MapsPreviewFragment : Fragment() {
         val markerLatitude = (arguments?.doubleArg1 ?: 0.0).toDouble()
         val markerLongitude = (arguments?.doubleArg2 ?: 0.0).toDouble()
 
-        mapView?.getMap()?.move(
+        mapView?.map?.move(
             CameraPosition(Point(markerLatitude, markerLongitude), 15.0f, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 2F),
             null

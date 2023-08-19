@@ -30,7 +30,7 @@ class FeedJobFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = JobsFeedBinding.inflate(inflater, container, false)
         val userId = (arguments?.user_Id ?: 0).toLong()
         val currentUser = viewModel.getCurrentUser()
