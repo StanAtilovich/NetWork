@@ -21,9 +21,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", '"https://netomedia.ru"'
 
-        // создайте в корне проекта файл maps.properties
-        // внутри файла разместите ключ для Яндекс MapKit
-        // MAPS_API_KEY=yout_api_key
         Properties properties = new Properties()
         if (rootProject.file("maps.properties").exists()) {
             properties.load(rootProject.file("maps.properties").newDataInputStream())
