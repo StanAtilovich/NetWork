@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.FeedJobFragment.Companion.user_Id
@@ -18,7 +19,6 @@ import ru.netology.network.databinding.FragmentWallBinding
 import ru.netology.network.dto.Post
 import ru.netology.network.util.LongArg
 import ru.netology.network.util.StringArg
-import ru.netology.network.view.loadCircleCrop
 import ru.netology.network.viewmodel.PostViewModel
 
 @AndroidEntryPoint
@@ -57,9 +57,17 @@ class WallFragment : Fragment() {
             binding.avatar.visibility = View.VISIBLE
             binding.author.visibility = View.VISIBLE
 
-            if (userAvatar != null)
-                binding.avatar.loadCircleCrop(userAvatar)
-            else binding.avatar.setImageResource(R.drawable.avatar)
+
+            if (userAvatar != null) {
+                Glide.with(this)
+                    .load(userAvatar)
+                    .circleCrop()
+                    .placeholder(R.drawable.avatar)
+                    .into(binding.avatar)
+            } else {
+                binding.avatar.setImageResource(R.drawable.avatar)
+            }
+
 
             binding.author.text = userName
 
