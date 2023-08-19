@@ -1,5 +1,6 @@
 package ru.netology.network
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.netology.network.R
 import ru.netology.network.databinding.CardJobBinding
 import ru.netology.network.dto.Job
 import ru.netology.network.util.convertString2DateTime2String
@@ -28,7 +28,8 @@ class JobAdapter(
         return JobViewHolder(binding, OnInteractionJobListener)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
+    @SuppressLint("NewApi")
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         val job = getItem(position)
         holder.bind(job)
@@ -50,7 +51,8 @@ class JobViewHolder(
     private val binding: CardJobBinding,
     private val OnInteractionJobListener: OnInteractionJobListener
 ) : RecyclerView.ViewHolder(binding.root) {
-    @RequiresApi(Build.VERSION_CODES.O)
+
+    @SuppressLint("NewApi")
     fun bind(job: Job) {
         binding.apply {
             startFinish.text = convertString2DateTime2String(job.start) + " - " +

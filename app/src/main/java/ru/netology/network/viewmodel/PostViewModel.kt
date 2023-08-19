@@ -1,5 +1,6 @@
 package ru.netology.network.viewmodel
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -328,7 +329,8 @@ class PostViewModel @Inject constructor(
         editedEvent.value = event
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
+    @SuppressLint("NewApi")
     fun changeDateTimeEvent(data: String, time: String) {
         val dataTime = convertDateTime2ISO_Instant(data, time)
         editedEvent.value = editedEvent.value?.copy(datetime = dataTime)
@@ -446,13 +448,13 @@ class PostViewModel @Inject constructor(
         editeJob.value = emptyJob
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
+    @SuppressLint("NewApi")
     fun changeJobStart(start: String) {
         val dataStart = convertDateTime2ISO_Instant(start, "00:00")
         editeJob.value = editeJob.value?.copy(start = dataStart)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun changeJobFinish(finish: String) {
         val finishString =
             if (finish.isNotEmpty()) convertDateTime2ISO_Instant(finish, "00:00") else null

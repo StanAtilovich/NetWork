@@ -1,5 +1,6 @@
 package ru.netology.network
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.icu.text.SimpleDateFormat
 import android.os.Build
@@ -43,7 +44,9 @@ class NewJobFragment : Fragment() {
         inflater.inflate(R.menu.new_post, menu)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
+
+    @SuppressLint("NewApi")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.save -> {
@@ -83,7 +86,7 @@ class NewJobFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

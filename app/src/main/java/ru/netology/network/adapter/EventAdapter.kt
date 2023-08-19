@@ -1,5 +1,6 @@
 package ru.netology.network
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
@@ -11,7 +12,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import ru.netology.network.R
 import ru.netology.network.databinding.CardEventBinding
 import ru.netology.network.dto.Event
 import ru.netology.network.enumeration.AttachmentType
@@ -36,7 +36,8 @@ class EventAdapter(
         return EventViewHolder(binding, OnInteractionEventListener)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
+    @SuppressLint("NewApi")
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val event = getItem(position)
         holder.bind(event)
@@ -48,7 +49,8 @@ class EventViewHolder(
     private val OnInteractionEventListener: OnInteractionEventListener,
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
+    @SuppressLint("NewApi")
     fun bind(event: Event) {
         binding.apply {
             author.text = event.author

@@ -1,5 +1,6 @@
 package ru.netology.network
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -23,7 +24,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.snackbar.Snackbar
-import ru.netology.network.R
 import ru.netology.network.databinding.FragmentNewEventBinding
 import java.time.Instant
 import java.time.format.DateTimeFormatter
@@ -53,7 +53,8 @@ class NewEventFragment : Fragment() {
         inflater.inflate(R.menu.new_post, menu)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
+    @SuppressLint("NewApi")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.save -> {
@@ -91,7 +92,7 @@ class NewEventFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
