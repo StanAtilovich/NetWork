@@ -25,12 +25,12 @@ interface OnInteractionWallListener {
 }
 
 class PostWallAdapter(
-    private val OnInteractionWallListener: OnInteractionWallListener
+    private val onInteractionWallListener: OnInteractionWallListener
 ) : ListAdapter<Post, PostWallViewHolder>(PostWallDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostWallViewHolder {
         val binding =
             CardWallPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PostWallViewHolder(binding, OnInteractionWallListener)
+        return PostWallViewHolder(binding, onInteractionWallListener)
     }
 
     override fun onBindViewHolder(holder: PostWallViewHolder, position: Int) {
@@ -52,7 +52,7 @@ class PostWallDiffCallback : DiffUtil.ItemCallback<Post>() {
 
 class PostWallViewHolder(
     private val binding: CardWallPostBinding,
-    private val OnInteractionWallListener: OnInteractionWallListener,
+    private val onInteractionWallListener: OnInteractionWallListener,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(post: Post) {
@@ -132,12 +132,12 @@ class PostWallViewHolder(
                     setOnMenuItemClickListener { item ->
                         when (item.itemId) {
                             R.id.remove -> {
-                                OnInteractionWallListener.onRemove(post)
+                                onInteractionWallListener.onRemove(post)
                                 true
                             }
 
                             R.id.edit_content -> {
-                                OnInteractionWallListener.onEdit(post)
+                                onInteractionWallListener.onEdit(post)
                                 true
                             }
 
@@ -148,10 +148,10 @@ class PostWallViewHolder(
             }
 
             buttonLike.setOnClickListener {
-                OnInteractionWallListener.onLike(post)
+                onInteractionWallListener.onLike(post)
             }
             buttonMap.setOnClickListener {
-                OnInteractionWallListener.onPreviewMap(post)
+                onInteractionWallListener.onPreviewMap(post)
             }
         }
     }

@@ -1,14 +1,11 @@
 package ru.netology.network
 
-import android.annotation.SuppressLint
 import android.net.Uri
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
 import android.widget.PopupMenu
-import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -29,11 +26,11 @@ interface OnInteractionEventListener {
 }
 
 class EventAdapter(
-    private val OnInteractionEventListener: OnInteractionEventListener,
+    private val onInteractionEventListener: OnInteractionEventListener,
 ) : androidx.recyclerview.widget.ListAdapter<Event, EventViewHolder>(EventDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val binding = CardEventBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return EventViewHolder(binding, OnInteractionEventListener)
+        return EventViewHolder(binding, onInteractionEventListener)
     }
 
 
@@ -46,7 +43,7 @@ class EventAdapter(
 
 class EventViewHolder(
     private val binding: CardEventBinding,
-    private val OnInteractionEventListener: OnInteractionEventListener,
+    private val onInteractionEventListener: OnInteractionEventListener,
 ) : RecyclerView.ViewHolder(binding.root) {
 
 
@@ -159,12 +156,12 @@ class EventViewHolder(
                     setOnMenuItemClickListener { item ->
                         when (item.itemId) {
                             R.id.remove -> {
-                                OnInteractionEventListener.onRemove(event)
+                                onInteractionEventListener.onRemove(event)
                                 true
                             }
 
                             R.id.edit_content -> {
-                                OnInteractionEventListener.onEdit(event)
+                                onInteractionEventListener.onEdit(event)
                                 true
                             }
 
@@ -175,14 +172,14 @@ class EventViewHolder(
             }
 
             buttonLike.setOnClickListener {
-                OnInteractionEventListener.onLike(event)
+                onInteractionEventListener.onLike(event)
             }
             buttonMap.setOnClickListener {
-                OnInteractionEventListener.onPreviewMap(event)
+                onInteractionEventListener.onPreviewMap(event)
             }
 
             buttonParticipate.setOnClickListener {
-                OnInteractionEventListener.onParticipate(event)
+                onInteractionEventListener.onParticipate(event)
             }
 
         }

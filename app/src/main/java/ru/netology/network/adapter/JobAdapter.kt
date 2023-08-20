@@ -1,12 +1,10 @@
 package ru.netology.network
 
-import android.annotation.SuppressLint
-import android.os.Build
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -21,11 +19,11 @@ interface OnInteractionJobListener {
 }
 
 class JobAdapter(
-    private val OnInteractionJobListener: OnInteractionJobListener
+    private val onInteractionJobListener: OnInteractionJobListener
 ) : ListAdapter<Job, JobViewHolder>(JobDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
         val binding = CardJobBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return JobViewHolder(binding, OnInteractionJobListener)
+        return JobViewHolder(binding, onInteractionJobListener)
     }
 
 
@@ -49,7 +47,7 @@ class JobDiffCallback : DiffUtil.ItemCallback<Job>() {
 
 class JobViewHolder(
     private val binding: CardJobBinding,
-    private val OnInteractionJobListener: OnInteractionJobListener
+    private val onInteractionJobListener: OnInteractionJobListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
 
@@ -73,12 +71,12 @@ class JobViewHolder(
                     setOnMenuItemClickListener { item ->
                         when (item.itemId) {
                             R.id.remove -> {
-                                OnInteractionJobListener.onRemove(job)
+                                onInteractionJobListener.onRemove(job)
                                 true
                             }
 
                             R.id.edit_content -> {
-                                OnInteractionJobListener.onEdit(job)
+                                onInteractionJobListener.onEdit(job)
                                 true
                             }
 
