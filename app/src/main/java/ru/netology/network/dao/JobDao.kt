@@ -9,14 +9,14 @@ import ru.netology.nework.entity.JobEntity
 
 @Dao
 interface JobDao {
-    @Query("SELECT * FROM JobEntity WHERE userId =:user_id ORDER BY start DESC")
-    fun getJobsByIdUser(user_id: Long): Flow<List<JobEntity>>
+    @Query("SELECT * FROM JobEntity WHERE userId =:userId ORDER BY start DESC")
+    fun getJobsByIdUser(userId: Long): Flow<List<JobEntity>>
 
     @Query("SELECT * FROM JobEntity ORDER BY start DESC")
     fun getJobs(): Flow<List<JobEntity>>
 
-    @Query("SELECT COUNT(*) == 0 FROM JobEntity WHERE userId =:user_id")
-    suspend fun isEmpty(user_id: Long): Boolean
+    @Query("SELECT COUNT(*) == 0 FROM JobEntity WHERE userId =:userId")
+    suspend fun isEmpty(userId: Long): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(post: JobEntity)
