@@ -87,6 +87,7 @@ class PostRepositoryImpl @Inject constructor(
                     it.ownedByMe
                 )
             }
+
             val users = bodyResponse.map {
                 it.users?.map {
                     Users(
@@ -305,9 +306,9 @@ class PostRepositoryImpl @Inject constructor(
             } else {
                 val likedPost = post.copy(likedByMe = true)
                 postdao.insert(PostEntity.fromDto(likedPost))
-                val response2 = apiService.likeById(id)
-                if (!response2.isSuccessful) {
-                    throw ApiError(response2.code(), response2.message())
+                val likeResponse = apiService.likeById(id)
+                if (!likeResponse.isSuccessful) {
+                    throw ApiError(likeResponse.code(), likeResponse.message())
                 }
             }
         } catch (e: IOException) {
