@@ -34,7 +34,7 @@ interface OnInteractionListener {
 class PostAdapter(
     private val OnInteractionListener: OnInteractionListener
 ) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
-    @SuppressLint("NewApi")
+
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = getItem(position)
         holder.bind(post)
@@ -51,7 +51,7 @@ class PostViewHolder(
     private val binding: CardPostBinding,
     private val onInteractionListener: OnInteractionListener,
 ) : RecyclerView.ViewHolder(binding.root) {
-    @SuppressLint("NewApi")
+
     fun bind(post: Post) {
         binding.apply {
             author.text = post.author

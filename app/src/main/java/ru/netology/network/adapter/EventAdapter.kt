@@ -37,7 +37,7 @@ class EventAdapter(
     }
 
 
-    @SuppressLint("NewApi")
+
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val event = getItem(position)
         holder.bind(event)
@@ -50,7 +50,7 @@ class EventViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
 
-    @SuppressLint("NewApi")
+
     fun bind(event: Event) {
         binding.apply {
             author.text = event.author

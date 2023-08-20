@@ -61,7 +61,7 @@
         android:label="LoginFragment" />
     <fragment
         android:id="@+id/mapsPreviewFragment"
-        android:name="ru.netology.network.mapsPreviewFragment"
+        android:name="ru.netology.network.MapsPreviewFragment"
         android:label="mapsPreviewFragment" />
     <fragment
         android:id="@+id/mapsNewMarkerFragment"

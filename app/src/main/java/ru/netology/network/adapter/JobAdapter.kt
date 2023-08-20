@@ -29,7 +29,7 @@ class JobAdapter(
     }
 
 
-    @SuppressLint("NewApi")
+
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         val job = getItem(position)
         holder.bind(job)
@@ -52,7 +52,7 @@ class JobViewHolder(
     private val OnInteractionJobListener: OnInteractionJobListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    @SuppressLint("NewApi")
+
     fun bind(job: Job) {
         binding.apply {
             startFinish.text = convertString2DateTime2String(job.start) + " - " +

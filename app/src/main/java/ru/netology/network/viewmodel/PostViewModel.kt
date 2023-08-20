@@ -1,9 +1,7 @@
 package ru.netology.network.viewmodel
 
-import android.annotation.SuppressLint
+
 import android.net.Uri
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -100,7 +98,7 @@ class PostViewModel @Inject constructor(
                 .map { job ->
                     JobFeedMode(
                         job.map {
-                            val ownerByMe = if (it.userId == myId) true else false
+                            val ownerByMe = it.userId == myId
                             println("=====" + it.userId + " " + myId + " " + ownerByMe)
                             it.copy(ownedByMe = ownerByMe)
                         },
@@ -330,7 +328,7 @@ class PostViewModel @Inject constructor(
     }
 
 
-    @SuppressLint("NewApi")
+
     fun changeDateTimeEvent(data: String, time: String) {
         val dataTime = convertDateTime2ISO_Instant(data, time)
         editedEvent.value = editedEvent.value?.copy(datetime = dataTime)
@@ -449,7 +447,7 @@ class PostViewModel @Inject constructor(
     }
 
 
-    @SuppressLint("NewApi")
+
     fun changeJobStart(start: String) {
         val dataStart = convertDateTime2ISO_Instant(start, "00:00")
         editeJob.value = editeJob.value?.copy(start = dataStart)
