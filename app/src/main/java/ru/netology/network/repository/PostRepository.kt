@@ -37,7 +37,7 @@ interface PostRepository {
     suspend fun likeEventById(id: Long, likedByMe: Boolean)
     suspend fun removeEventById(id: Long)
     suspend fun partEventById(id: Long, participatedByMe: Boolean)
-    suspend fun getJobs(userId: Long, currentUser: Long)
-    suspend fun saveJob(userId: Long, job: Job)
-    suspend fun removeJobById(id: Long)
+   suspend fun getJobs(userId: Long, currentUser: Long)
+   suspend fun saveJob(userId: Long, job: Job)
+   suspend fun removeJobById(id: Long)
 }

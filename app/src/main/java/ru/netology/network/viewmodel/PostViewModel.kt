@@ -510,4 +510,3 @@ class PostViewModel @Inject constructor(
 private val noPhoto = PhotoModel()
 private val noCoordinates = Coordinates()
 
-

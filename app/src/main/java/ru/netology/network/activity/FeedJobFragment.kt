@@ -21,9 +21,8 @@ class FeedJobFragment : Fragment() {
         var Bundle.user_Id: Long by LongArg
     }
 
-    private val viewModel: PostViewModel by viewModels(
+    private val viewModel: PostViewModel by viewModels()
 
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater,

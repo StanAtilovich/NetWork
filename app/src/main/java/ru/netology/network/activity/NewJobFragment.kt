@@ -1,9 +1,7 @@
 package ru.netology.network
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.icu.text.SimpleDateFormat
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -12,12 +10,10 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import ru.netology.network.R
 import ru.netology.network.databinding.FragmentNewJobBinding
 import ru.netology.network.util.AndroidUtils
 import ru.netology.network.viewmodel.PostViewModel

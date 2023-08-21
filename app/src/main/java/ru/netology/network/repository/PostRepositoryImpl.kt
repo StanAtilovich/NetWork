@@ -78,8 +78,12 @@ class PostRepositoryImpl @Inject constructor(
                     it.link,
                     it.likeOwnerIds,
                     it.mentionIds,
-                    it.mentionIds?.map { id ->
-                        it.users?.get(id.toString())!!.name
+                    it.mentionIds?.mapNotNull {
+                    id ->
+                    it.users?.get(id.toString())?.name
+
+                  //  it.mentionIds?.map { id ->
+                  //      it.users?.get(id.toString())!!.name
                     },
                     it.mentionedMe,
                     it.likedByMe,
@@ -435,13 +439,19 @@ class PostRepositoryImpl @Inject constructor(
                     it.likeOwnerIds,
                     it.likedByMe,
                     it.speakerIds,
-                    it.speakerIds?.map { id ->
-                        it.users?.get(id.toString())!!.name
+                    it.participantsIds?.mapNotNull { id->
+                        it.users?.get(id.toString())?.name
                     },
+                  //  it.speakerIds?.map { id ->
+                  //      it.users?.get(id.toString())!!.name
+                  //  },
                     it.participantsIds,
-                    it.participantsIds?.map { id ->
-                        it.users?.get(id.toString())!!.name
+                    it.participantsIds?.mapNotNull { id ->
+                        it.users?.get(id.toString())?.name
                     },
+                //    it.participantsIds?.map { id ->
+                //        it.users?.get(id.toString())!!.name
+                //    },
                     it.participatedByMe,
                     it.attachment,
                     it.link,
@@ -762,17 +772,17 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun saveJob(userId: Long, job: Job) {
-        try {
-            val jobRequest = JobRequest(
-                job.id,
-                job.name,
-                job.position,
-                job.start,
-                job.finish,
-                job.link
-            )
-            val response = apiService.saveJob(jobRequest)
+   override suspend fun saveJob(userId: Long, job: Job) {
+       try {
+           val jobRequest = JobRequest(
+               job.id,
+               job.name,
+               job.position,
+               job.start,
+               job.finish,
+               job.link
+           )
+           val response = apiService.saveJob(jobRequest)
 
             if (!response.isSuccessful) {
                 throw ApiError(response.code(), response.message())
