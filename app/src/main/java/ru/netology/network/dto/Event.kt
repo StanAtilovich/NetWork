@@ -25,3 +25,31 @@ data class Event(
     val link: String? = null,
     val ownedByMe: Boolean
 )
+
+fun EventResponse.toEvent(): Event {
+    return Event(
+        id,
+        authorId,
+        author,
+        authorAvatar,
+        authorJob,
+        content,
+        datetime,
+        published,
+        coords,
+        type,
+        likeOwnerIds,
+        likedByMe,
+        speakerIds,
+        speakerIds?.mapNotNull { id ->
+            users?.get(id.toString())?.name
+        },
+        participantsIds,
+        participantsIds?.mapNotNull { id ->
+            users?.get(id.toString())?.name
+        },
+        participatedByMe,
+        attachment,
+        link, ownedByMe
+    )
+}

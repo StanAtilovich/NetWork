@@ -20,6 +20,8 @@ import ru.netology.network.dto.MediaResponse
 import ru.netology.network.dto.Post
 import ru.netology.network.dto.PostRequest
 import ru.netology.network.dto.Users
+import ru.netology.network.dto.toEvent
+import ru.netology.network.dto.toPost
 import ru.netology.network.entity.EventEntity
 import ru.netology.network.entity.toDto
 import ru.netology.network.entity.toEntity
@@ -66,30 +68,28 @@ class PostRepositoryImpl @Inject constructor(
             val bodyResponse =
                 response.body() ?: throw ApiError(response.code(), response.message())
             val post = bodyResponse.map {
-                Post(
-                    it.id,
-                    it.authorId,
-                    it.author,
-                    it.authorAvatar,
-                    it.authorJob,
-                    it.content,
-                    it.published,
-                    it.coords,
-                    it.link,
-                    it.likeOwnerIds,
-                    it.mentionIds,
-                    it.mentionIds?.mapNotNull {
-                    id ->
-                    it.users?.get(id.toString())?.name
-
-                  //  it.mentionIds?.map { id ->
-                  //      it.users?.get(id.toString())!!.name
-                    },
-                    it.mentionedMe,
-                    it.likedByMe,
-                    it.attachment,
-                    it.ownedByMe
-                )
+                //  Post(
+                //      it.id,
+                //      it.authorId,
+                //      it.author,
+                //      it.authorAvatar,
+                //      it.authorJob,
+                //      it.content,
+                //      it.published,
+                //      it.coords,
+                //      it.link,
+                //      it.likeOwnerIds,
+                //      it.mentionIds,
+                //      it.mentionIds?.mapNotNull {
+                //      id ->
+                //      it.users?.get(id.toString())?.name
+                //      },
+                //      it.mentionedMe,
+                //      it.likedByMe,
+                //      it.attachment,
+                //      it.ownedByMe
+                //  )
+                it.toPost()
             }
 
             val users = bodyResponse.map {
@@ -123,26 +123,27 @@ class PostRepositoryImpl @Inject constructor(
             val bodyResponse =
                 response.body() ?: throw ApiError(response.code(), response.message())
             val post = bodyResponse.map {
-                Post(
-                    it.id,
-                    it.authorId,
-                    it.author,
-                    it.authorAvatar,
-                    it.authorJob,
-                    it.content,
-                    it.published,
-                    it.coords,
-                    it.link,
-                    it.likeOwnerIds,
-                    it.mentionIds,
-                    it.mentionIds?.map { id ->
-                        it.users?.get(id.toString())!!.name
-                    },
-                    it.mentionedMe,
-                    it.likedByMe,
-                    it.attachment,
-                    it.ownedByMe
-                )
+               // Post(
+               //     it.id,
+               //     it.authorId,
+               //     it.author,
+               //     it.authorAvatar,
+               //     it.authorJob,
+               //     it.content,
+               //     it.published,
+               //     it.coords,
+               //     it.link,
+               //     it.likeOwnerIds,
+               //     it.mentionIds,
+               //     it.mentionIds?.map { id ->
+               //         it.users?.get(id.toString())!!.name
+               //     },
+               //     it.mentionedMe,
+               //     it.likedByMe,
+               //     it.attachment,
+               //     it.ownedByMe
+               // )
+                it.toPost()
             }
             val users = bodyResponse.map {
                 it.users?.map {
@@ -278,26 +279,27 @@ class PostRepositoryImpl @Inject constructor(
             }
             val post =
                 response.body()?.let {
-                    Post(
-                        it.id,
-                        it.authorId,
-                        it.author,
-                        it.authorAvatar,
-                        it.authorJob,
-                        it.content,
-                        it.published,
-                        it.coords,
-                        it.link,
-                        it.likeOwnerIds,
-                        it.mentionIds,
-                        it.mentionIds?.map { id ->
-                            it.users?.get(id.toString())!!.name
-                        },
-                        it.mentionedMe,
-                        it.likedByMe,
-                        it.attachment,
-                        it.ownedByMe
-                    )
+                 //   Post(
+                 //       it.id,
+                 //       it.authorId,
+                 //       it.author,
+                 //       it.authorAvatar,
+                 //       it.authorJob,
+                 //       it.content,
+                 //       it.published,
+                 //       it.coords,
+                 //       it.link,
+                 //       it.likeOwnerIds,
+                 //       it.mentionIds,
+                 //       it.mentionIds?.map { id ->
+                 //           it.users?.get(id.toString())!!.name
+                 //       },
+                 //       it.mentionedMe,
+                 //       it.likedByMe,
+                 //       it.attachment,
+                 //       it.ownedByMe
+                 //   )
+                    it.toPost()
                 } ?: throw ApiError(response.code(), response.message())
 
             if (post.likedByMe) {
@@ -425,38 +427,33 @@ class PostRepositoryImpl @Inject constructor(
                 }
             }
             val event = bodyResponse.map {
-                Event(
-                    it.id,
-                    it.authorId,
-                    it.author,
-                    it.authorAvatar,
-                    it.authorJob,
-                    it.content,
-                    it.datetime,
-                    it.published,
-                    it.coords,
-                    it.type,
-                    it.likeOwnerIds,
-                    it.likedByMe,
-                    it.speakerIds,
-                    it.participantsIds?.mapNotNull { id->
-                        it.users?.get(id.toString())?.name
-                    },
-                  //  it.speakerIds?.map { id ->
-                  //      it.users?.get(id.toString())!!.name
-                  //  },
-                    it.participantsIds,
-                    it.participantsIds?.mapNotNull { id ->
-                        it.users?.get(id.toString())?.name
-                    },
-                //    it.participantsIds?.map { id ->
-                //        it.users?.get(id.toString())!!.name
-                //    },
-                    it.participatedByMe,
-                    it.attachment,
-                    it.link,
-                    it.ownedByMe
-                )
+              //  Event(
+              //      it.id,
+              //      it.authorId,
+              //      it.author,
+              //      it.authorAvatar,
+              //      it.authorJob,
+              //      it.content,
+              //      it.datetime,
+              //      it.published,
+              //      it.coords,
+              //      it.type,
+              //      it.likeOwnerIds,
+              //      it.likedByMe,
+              //      it.speakerIds,
+              //      it.participantsIds?.mapNotNull { id ->
+              //          it.users?.get(id.toString())?.name
+              //      },
+              //      it.participantsIds,
+              //      it.participantsIds?.mapNotNull { id ->
+              //          it.users?.get(id.toString())?.name
+              //      },
+              //      it.participatedByMe,
+              //      it.attachment,
+              //      it.link,
+              //      it.ownedByMe
+              //  )
+                it.toEvent()
             }
             eventdao.insert(event.toEntity())
         } catch (e: IOException) {
@@ -555,32 +552,33 @@ class PostRepositoryImpl @Inject constructor(
                 }
                 val event =
                     response.body()?.let {
-                        Event(
-                            it.id,
-                            it.authorId,
-                            it.author,
-                            it.authorAvatar,
-                            it.authorJob,
-                            it.content,
-                            it.datetime,
-                            it.published,
-                            it.coords,
-                            it.type,
-                            it.likeOwnerIds,
-                            it.likedByMe,
-                            it.speakerIds,
-                            it.speakerIds?.map { id ->
-                                it.users?.get(id.toString())!!.name
-                            },
-                            it.participantsIds,
-                            it.participantsIds?.map { id ->
-                                it.users?.get(id.toString())!!.name
-                            },
-                            it.participatedByMe,
-                            it.attachment,
-                            it.link,
-                            it.ownedByMe
-                        )
+                      //  Event(
+                      //      it.id,
+                      //      it.authorId,
+                      //      it.author,
+                      //      it.authorAvatar,
+                      //      it.authorJob,
+                      //      it.content,
+                      //      it.datetime,
+                      //      it.published,
+                      //      it.coords,
+                      //      it.type,
+                      //      it.likeOwnerIds,
+                      //      it.likedByMe,
+                      //      it.speakerIds,
+                      //      it.speakerIds?.map { id ->
+                      //          it.users?.get(id.toString())!!.name
+                      //      },
+                      //      it.participantsIds,
+                      //      it.participantsIds?.map { id ->
+                      //          it.users?.get(id.toString())!!.name
+                      //      },
+                      //      it.participatedByMe,
+                      //      it.attachment,
+                      //      it.link,
+                      //      it.ownedByMe
+                      //  )
+                        it.toEvent()
                     } ?: throw ApiError(response.code(), response.message())
                 eventdao.insert(EventEntity.fromDto(event))
             } else {
@@ -590,32 +588,33 @@ class PostRepositoryImpl @Inject constructor(
                 }
                 val event =
                     response.body()?.let {
-                        Event(
-                            it.id,
-                            it.authorId,
-                            it.author,
-                            it.authorAvatar,
-                            it.authorJob,
-                            it.content,
-                            it.datetime,
-                            it.published,
-                            it.coords,
-                            it.type,
-                            it.likeOwnerIds,
-                            it.likedByMe,
-                            it.speakerIds,
-                            it.speakerIds?.map { id ->
-                                it.users?.get(id.toString())!!.name
-                            },
-                            it.participantsIds,
-                            it.participantsIds?.map { id ->
-                                it.users?.get(id.toString())!!.name
-                            },
-                            it.participatedByMe,
-                            it.attachment,
-                            it.link,
-                            it.ownedByMe
-                        )
+                    //    Event(
+                    //        it.id,
+                    //        it.authorId,
+                    //        it.author,
+                    //        it.authorAvatar,
+                    //        it.authorJob,
+                    //        it.content,
+                    //        it.datetime,
+                    //        it.published,
+                    //        it.coords,
+                    //        it.type,
+                    //        it.likeOwnerIds,
+                    //        it.likedByMe,
+                    //        it.speakerIds,
+                    //        it.speakerIds?.map { id ->
+                    //            it.users?.get(id.toString())!!.name
+                    //        },
+                    //        it.participantsIds,
+                    //        it.participantsIds?.map { id ->
+                    //            it.users?.get(id.toString())!!.name
+                    //        },
+                    //        it.participatedByMe,
+                    //        it.attachment,
+                    //        it.link,
+                    //        it.ownedByMe
+                    //    )
+                        it.toEvent()
                     } ?: throw ApiError(response.code(), response.message())
                 eventdao.insert(EventEntity.fromDto(event))
             }
@@ -649,32 +648,33 @@ class PostRepositoryImpl @Inject constructor(
                 }
                 val event =
                     response.body()?.let {
-                        Event(
-                            it.id,
-                            it.authorId,
-                            it.author,
-                            it.authorAvatar,
-                            it.authorJob,
-                            it.content,
-                            it.datetime,
-                            it.published,
-                            it.coords,
-                            it.type,
-                            it.likeOwnerIds,
-                            it.likedByMe,
-                            it.speakerIds,
-                            it.speakerIds?.map { id ->
-                                it.users?.get(id.toString())!!.name
-                            },
-                            it.participantsIds,
-                            it.participantsIds?.map { id ->
-                                it.users?.get(id.toString())!!.name
-                            },
-                            it.participatedByMe,
-                            it.attachment,
-                            it.link,
-                            it.ownedByMe
-                        )
+                      //  Event(
+                      //      it.id,
+                      //      it.authorId,
+                      //      it.author,
+                      //      it.authorAvatar,
+                      //      it.authorJob,
+                      //      it.content,
+                      //      it.datetime,
+                      //      it.published,
+                      //      it.coords,
+                      //      it.type,
+                      //      it.likeOwnerIds,
+                      //      it.likedByMe,
+                      //      it.speakerIds,
+                      //      it.speakerIds?.map { id ->
+                      //          it.users?.get(id.toString())!!.name
+                      //      },
+                      //      it.participantsIds,
+                      //      it.participantsIds?.map { id ->
+                      //          it.users?.get(id.toString())!!.name
+                      //      },
+                      //      it.participatedByMe,
+                      //      it.attachment,
+                      //      it.link,
+                      //      it.ownedByMe
+                      //  )
+                        it.toEvent()
                     } ?: throw ApiError(response.code(), response.message())
                 eventdao.insert(EventEntity.fromDto(event))
             } else {
@@ -684,32 +684,33 @@ class PostRepositoryImpl @Inject constructor(
                 }
                 val event =
                     response.body()?.let {
-                        Event(
-                            it.id,
-                            it.authorId,
-                            it.author,
-                            it.authorAvatar,
-                            it.authorJob,
-                            it.content,
-                            it.datetime,
-                            it.published,
-                            it.coords,
-                            it.type,
-                            it.likeOwnerIds,
-                            it.likedByMe,
-                            it.speakerIds,
-                            it.speakerIds?.map { id ->
-                                it.users?.get(id.toString())!!.name
-                            },
-                            it.participantsIds,
-                            it.participantsIds?.map { id ->
-                                it.users?.get(id.toString())!!.name
-                            },
-                            it.participatedByMe,
-                            it.attachment,
-                            it.link,
-                            it.ownedByMe
-                        )
+                     //   Event(
+                     //       it.id,
+                     //       it.authorId,
+                     //       it.author,
+                     //       it.authorAvatar,
+                     //       it.authorJob,
+                     //       it.content,
+                     //       it.datetime,
+                     //       it.published,
+                     //       it.coords,
+                     //       it.type,
+                     //       it.likeOwnerIds,
+                     //       it.likedByMe,
+                     //       it.speakerIds,
+                     //       it.speakerIds?.map { id ->
+                     //           it.users?.get(id.toString())!!.name
+                     //       },
+                     //       it.participantsIds,
+                     //       it.participantsIds?.map { id ->
+                     //           it.users?.get(id.toString())!!.name
+                     //       },
+                     //       it.participatedByMe,
+                     //       it.attachment,
+                     //       it.link,
+                     //       it.ownedByMe
+                     //   )
+                        it.toEvent()
                     } ?: throw ApiError(response.code(), response.message())
                 eventdao.insert(EventEntity.fromDto(event))
             }
@@ -772,17 +773,17 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
-   override suspend fun saveJob(userId: Long, job: Job) {
-       try {
-           val jobRequest = JobRequest(
-               job.id,
-               job.name,
-               job.position,
-               job.start,
-               job.finish,
-               job.link
-           )
-           val response = apiService.saveJob(jobRequest)
+    override suspend fun saveJob(userId: Long, job: Job) {
+        try {
+            val jobRequest = JobRequest(
+                job.id,
+                job.name,
+                job.position,
+                job.start,
+                job.finish,
+                job.link
+            )
+            val response = apiService.saveJob(jobRequest)
 
             if (!response.isSuccessful) {
                 throw ApiError(response.code(), response.message())

@@ -18,3 +18,29 @@ data class PostResponse(
     val ownedByMe: Boolean = false,
     val users: Map<String, UserPreview>?,
 )
+
+fun PostResponse.toPost(): Post{
+    return Post(
+        id,
+        authorId,
+        author,
+        authorAvatar,
+        authorJob,
+        content,
+        published,
+        coords,
+        link,
+        likeOwnerIds,
+        mentionIds,
+        mentionIds?.mapNotNull { id ->
+            users?.get(id.toString())?.name
+        },
+        mentionedMe,
+        likedByMe,
+        attachment,
+        ownedByMe
+    )
+}
+
+
+
