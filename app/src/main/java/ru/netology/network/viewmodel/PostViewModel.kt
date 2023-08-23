@@ -25,6 +25,7 @@ import ru.netology.network.model.FeedModel
 import ru.netology.network.model.FeedModelState
 import ru.netology.network.model.JobFeedMode
 import ru.netology.network.model.PhotoModel
+import ru.netology.network.repository.JobRepository
 import ru.netology.network.repository.PostRepository
 import ru.netology.network.util.SingleLiveEvent
 import ru.netology.network.util.convertDateTime2ISO_Instant
@@ -69,6 +70,7 @@ private val emptyJob = Job(
 @HiltViewModel
 class PostViewModel @Inject constructor(
     private val repository: PostRepository,
+    private val jobRepository: JobRepository,
     private val auth: AppAuth,
 ) : ViewModel() {
     val dataPosts: LiveData<FeedModel> = auth.authStateFlow
@@ -94,7 +96,8 @@ class PostViewModel @Inject constructor(
         }.asLiveData(Dispatchers.Default)
     val dataJobs: LiveData<JobFeedMode> = auth.authStateFlow
         .flatMapLatest { (myId, _) ->
-            repository.jobs
+            jobRepository.jobs
+                    // repository.jobs
                 .map { job ->
                     JobFeedMode(
                         job.map {
@@ -416,7 +419,8 @@ class PostViewModel @Inject constructor(
     fun loadJobs(userId: Long, currentUserId: Long) = viewModelScope.launch {
         try {
             _dataState.value = FeedModelState(loading = true)
-            repository.getJobs(userId, currentUserId)
+            jobRepository.getJobs(userId, currentUserId)
+           // repository.getJobs(userId, currentUserId)
             _dataState.value = FeedModelState()
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
@@ -436,7 +440,8 @@ class PostViewModel @Inject constructor(
             _jobCreated.value = Unit
             viewModelScope.launch {
                 try {
-                    repository.saveJob(userId, job)
+                    jobRepository.saveJob(userId, job)
+                    //repository.saveJob(userId, job)
                     _dataState.value = FeedModelState()
                 } catch (e: Exception) {
                     _dataState.value = FeedModelState(error = true)
@@ -488,7 +493,8 @@ class PostViewModel @Inject constructor(
 
     fun removeJobById(id: Long) = viewModelScope.launch {
         try {
-            repository.removeJobById(id)
+            jobRepository.removeJobById(id)
+            //repository.removeJobById(id)
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
         }
@@ -497,7 +503,8 @@ class PostViewModel @Inject constructor(
     fun refreshJobs(userId: Long, currentUserId: Long) = viewModelScope.launch {
         try {
             _dataState.value = FeedModelState(refreshing = true)
-            repository.getJobs(userId, currentUserId)
+            jobRepository.getJobs(userId, currentUserId)
+           // repository.getJobs(userId, currentUserId)
             _dataState.value = FeedModelState(error = true)
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
