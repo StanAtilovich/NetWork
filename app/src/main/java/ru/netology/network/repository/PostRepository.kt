@@ -11,9 +11,9 @@ import ru.netology.network.dto.Users
 
 interface PostRepository {
     val posts: Flow<List<Post>>
-    val events: Flow<List<Event>>
     val users: Flow<List<Users>>
-  //  val jobs: Flow<List<Job>>
+
+
     suspend fun getPosts()
     suspend fun getPostsByAuthor(userId: Long)
     suspend fun upload(upload: MediaRequest): MediaResponse
@@ -31,13 +31,4 @@ interface PostRepository {
     ): AuthState
 
     suspend fun getUsers()
-    suspend fun getEvents()
-    suspend fun saveEvent(event: Event)
-    suspend fun saveEventWithAttachment(event: Event, upload: MediaRequest)
-    suspend fun likeEventById(id: Long, likedByMe: Boolean)
-    suspend fun removeEventById(id: Long)
-    suspend fun partEventById(id: Long, participatedByMe: Boolean)
- //  suspend fun getJobs(userId: Long, currentUser: Long)
- //  suspend fun saveJob(userId: Long, job: Job)
- //  suspend fun removeJobById(id: Long)
 }

@@ -71,7 +71,7 @@ class NewJobFragment : Fragment() {
                             viewModel.changeNameJob(it.editName.text.toString())
                             viewModel.changePositionJob(it.editPosition.text.toString())
                             viewModel.changeLinkJob(it.editLink.text.toString())
-                            viewModel.saveJob(viewModel.getCurrentUser())
+                            viewModel.saveJob(viewModel.saveJob())
                             AndroidUtils.hideKeyboard(requireView())
                         }
                     }

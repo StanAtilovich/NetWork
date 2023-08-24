@@ -32,7 +32,7 @@ class FeedJobFragment : Fragment() {
         val binding = JobsFeedBinding.inflate(inflater, container, false)
         val userId = (arguments?.user_Id ?: 0).toLong()
         val currentUser = viewModel.getCurrentUser()
-        viewModel.loadJobs(userId, currentUser)
+        viewModel.loadJobs(userId)
         if (currentUser == userId)
             binding.fab.visibility = View.VISIBLE
         else
@@ -66,7 +66,7 @@ class FeedJobFragment : Fragment() {
             binding.emptyText.isVisible = state.empty
         }
         binding.swiperefresh.setOnRefreshListener {
-            viewModel.refreshJobs(userId, currentUser)
+            viewModel.refreshJobs(userId)
         }
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_feedJobsFragment_to_newJobFragment)

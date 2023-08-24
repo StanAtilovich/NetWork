@@ -25,6 +25,7 @@ import ru.netology.network.model.FeedModel
 import ru.netology.network.model.FeedModelState
 import ru.netology.network.model.JobFeedMode
 import ru.netology.network.model.PhotoModel
+import ru.netology.network.repository.EventsRepository
 import ru.netology.network.repository.JobRepository
 import ru.netology.network.repository.PostRepository
 import ru.netology.network.util.SingleLiveEvent
@@ -71,6 +72,7 @@ private val emptyJob = Job(
 class PostViewModel @Inject constructor(
     private val repository: PostRepository,
     private val jobRepository: JobRepository,
+    private val eventsRepository: EventsRepository,
     private val auth: AppAuth,
 ) : ViewModel() {
     val dataPosts: LiveData<FeedModel> = auth.authStateFlow
@@ -86,7 +88,7 @@ class PostViewModel @Inject constructor(
 
     val dataEvents: LiveData<EventFeedModel> = auth.authStateFlow
         .flatMapLatest { (myId, _) ->
-            repository.events
+            eventsRepository.events
                 .map { event ->
                     EventFeedModel(
                         event.map { it.copy(ownedByMe = it.authorId == myId) },
@@ -157,7 +159,7 @@ class PostViewModel @Inject constructor(
     fun loadEvents() = viewModelScope.launch {
         try {
             _dataState.value = FeedModelState(loading = true)
-            repository.getEvents()
+            eventsRepository.getEvents()
             _dataState.value = FeedModelState()
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
@@ -286,7 +288,7 @@ class PostViewModel @Inject constructor(
     fun refreshEvents() = viewModelScope.launch {
         try {
             _dataState.value = FeedModelState(loading = true)
-            repository.getEvents()
+            eventsRepository.getEvents()
             _dataState.value = FeedModelState()
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
@@ -303,16 +305,16 @@ class PostViewModel @Inject constructor(
                             var EventNew = event
                             if (event.attachment != null)
                                 EventNew = event.copy(attachment = null)
-                            repository.saveEvent(EventNew)
+                            eventsRepository.saveEvent(EventNew)
                         }
 
                         else -> {
                             if (_photo.value?.file != null)
-                                repository.saveEventWithAttachment(
+                                eventsRepository.saveEventWithAttachment(
                                     event,
                                     MediaRequest(_photo.value?.file!!)
                                 )
-                            else repository.saveEvent(event)
+                            else eventsRepository.saveEvent(event)
                         }
                     }
                     _dataState.value = FeedModelState()
@@ -386,7 +388,7 @@ class PostViewModel @Inject constructor(
 
     fun removeEventById(id: Long) = viewModelScope.launch {
         try {
-            repository.removeEventById(id)
+            eventsRepository.removeEventById(id)
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
         }
@@ -394,7 +396,7 @@ class PostViewModel @Inject constructor(
 
     fun likeEventById(id: Long, likedByMe: Boolean) = viewModelScope.launch {
         try {
-            repository.likeEventById(id, likedByMe)
+            eventsRepository.likeEventById(id, likedByMe)
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
         }
@@ -406,7 +408,7 @@ class PostViewModel @Inject constructor(
 
     fun participate(id: Long, participatedByMe: Boolean) = viewModelScope.launch {
         try {
-            repository.partEventById(id, participatedByMe)
+            eventsRepository.partEventById(id, participatedByMe)
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
         }
@@ -416,11 +418,10 @@ class PostViewModel @Inject constructor(
         return auth.authStateFlow.value.id
     }
 
-    fun loadJobs(userId: Long, currentUserId: Long) = viewModelScope.launch {
+    fun loadJobs(userId: Long) = viewModelScope.launch {
         try {
             _dataState.value = FeedModelState(loading = true)
-            jobRepository.getJobs(userId, currentUserId)
-           // repository.getJobs(userId, currentUserId)
+            jobRepository.getJobs(userId)
             _dataState.value = FeedModelState()
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
@@ -435,13 +436,12 @@ class PostViewModel @Inject constructor(
         return editeJob.value
     }
 
-    fun saveJob(userId: Long) {
+    fun saveJob() {
         editeJob.value?.let { job ->
             _jobCreated.value = Unit
             viewModelScope.launch {
                 try {
-                    jobRepository.saveJob(userId, job)
-                    //repository.saveJob(userId, job)
+                    jobRepository.saveJob(job)
                     _dataState.value = FeedModelState()
                 } catch (e: Exception) {
                     _dataState.value = FeedModelState(error = true)
@@ -494,17 +494,15 @@ class PostViewModel @Inject constructor(
     fun removeJobById(id: Long) = viewModelScope.launch {
         try {
             jobRepository.removeJobById(id)
-            //repository.removeJobById(id)
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)
         }
     }
 
-    fun refreshJobs(userId: Long, currentUserId: Long) = viewModelScope.launch {
+    fun refreshJobs(userId: Long) = viewModelScope.launch {
         try {
             _dataState.value = FeedModelState(refreshing = true)
-            jobRepository.getJobs(userId, currentUserId)
-           // repository.getJobs(userId, currentUserId)
+            jobRepository.getJobs(userId)
             _dataState.value = FeedModelState(error = true)
         } catch (e: Exception) {
             _dataState.value = FeedModelState(error = true)

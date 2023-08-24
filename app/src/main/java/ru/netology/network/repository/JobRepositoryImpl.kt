@@ -4,6 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import ru.netology.network.api.ApiService
+import ru.netology.network.auth.AppAuth
 import ru.netology.network.dao.JobDao
 import ru.netology.network.dto.Job
 import ru.netology.network.dto.JobRequest
@@ -20,14 +21,15 @@ import javax.inject.Singleton
 @Singleton
  class JobRepositoryImpl @Inject constructor(
     private val jobdao: JobDao,
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val appAuth: AppAuth,
 
 ) : JobRepository{
     override val jobs = jobdao.getJobs()
         .map(List<JobEntity>::toDto)
         .flowOn(Dispatchers.Default)
 
-    override suspend fun getJobs(userId: Long, currentUser: Long) {
+    override suspend fun getJobs(userId: Long) {
         try {
             val response = apiService.getJobsByUserId(userId)
             if (!response.isSuccessful) {
@@ -35,6 +37,7 @@ import javax.inject.Singleton
             }
             val bodyResponse =
                 response.body() ?: throw ApiError(response.code(), response.message())
+            val currentUser = appAuth.authStateFlow.value.id
             val job = bodyResponse.map {
                 Job(
                     userId,
@@ -56,7 +59,7 @@ import javax.inject.Singleton
         }
     }
 
-    override suspend fun saveJob(userId: Long, job: Job) {
+    override suspend fun saveJob(job: Job) {
         try {
             val jobRequest = JobRequest(
                 job.id,
@@ -72,10 +75,11 @@ import javax.inject.Singleton
                 throw ApiError(response.code(), response.message())
             }
 
+            val currentUser = appAuth.authStateFlow.value.id
             val bodyResponse =
                 response.body() ?: throw ApiError(response.code(), response.message())
             val job2save = Job(
-                userId,
+                currentUser,
                 true,
                 bodyResponse.id,
                 bodyResponse.name,
