@@ -1,25 +1,15 @@
 <resources>
     <string name="app_name">NetWork</string>
-    <string name="posts">Посты</string>
     <string name="main">Главная</string>
     <string name="events">События</string>
-    <string name="contacts">Контакты</string>
-    <string name="profile">Профиль</string>
     <string name="empty_posts">Постов нет</string>
-    <string name="add_post">Добавить пост</string>
     <string name="avatar_user">Аватар юзера</string>
     <string name="user_name">Имя пользователя</string>
     <string name="mention">Упоминания</string>
     <string name="menu">Меню</string>
     <string name="sample_published_date">Дата публикации</string>
     <string name="placeWork">Место работы</string>
-    <string name="image_full_screen">развернуть</string>
-    <string name="video">Видео</string>
     <string name="like">Нравиться</string>
-    <string name="users">Пользователи</string>
-    <string name="mentions">Упоминания</string>
-    <string name="coordinates">Координаты месторасположения</string>
-    <string name="share">Поделиться</string>
     <string name="main_menu_posts">Посты</string>
     <string name="main_menu_jobs">Работа</string>
     <string name="main_menu_sign_out">Выход</string>
@@ -63,7 +53,6 @@
     <string name="error_load">Не удалось загрузить данные</string>
     <string name="retry">Повторить</string>
     <string name="button_part">Учавствую</string>
-    <string name="button_part2">Участвовать</string>
     <string name="retry_loading">Повторить</string>
     <string name="participate">Учавствовать</string>
     <string name="hi">Добро пожаловать</string>

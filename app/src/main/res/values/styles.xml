@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.AppTheme.ButtonAdd"
-        parent="Widget.MaterialComponents.Button">
-        <item name="iconTint">@color/icon_button_tint</item>
-        <item name="iconPadding">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:background"> @drawable/button_background_rounded</item>
-        <item name="android:paddingStart">@dimen/commonSpacingMedium</item>
-        <item name="android:paddingEnd">@dimen/commonSpacingMedium</item>
-        <item name="android:minWidth">@dimen/iconButtonSize</item>
-        <item name="android:minHeight">@dimen/iconButtonSize</item>
-    </style>
+
     <style name="Widget.AppTheme.AppBar" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="iconTint">@color/white</item>
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
@@ -55,14 +44,6 @@
         <item name="iconTint">@color/white</item>
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
         <item name="android:minHeight">@dimen/icon_button_min_size</item>
-    </style>
-
-    <style name="Widget.AppTheme.Viewing"
-        parent="Widget.MaterialComponents.Button.TextButton.Icon">
-        <item name="iconTint">@color/icon_button_tint</item>
-        <item name="android:minWidth">@dimen/iconButtonSize</item>
-        <item name="android:minHeight">@dimen/iconButtonSize</item>
-        <item name="android:textColor"> @color/colorGrey </item>
     </style>
 
     <dimen name="iconButtonSize">48dp</dimen>
