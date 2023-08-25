@@ -35,7 +35,7 @@
     <string name="latitude">Широта</string>
     <string name="longitude">Долгота\n</string>
     <string name="new_post_content">Содержание</string>
-    <string name="new_post_link">ССылочка\n</string>
+    <string name="new_post_link">Сылочка\n</string>
     <string name="new_post_coords">Местоположение</string>
     <string name="remove">Удалить</string>
     <string name="description_select_photo">Фото</string>

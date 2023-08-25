@@ -51,23 +51,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="avatar, authorJob"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="80dp" />
+            app:constraint_referenced_ids="avatar, authorJob" />
 
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginStart="@dimen/common_spacing"
-            android:layout_marginEnd="@dimen/common_spacing"
-            android:layout_marginBottom="@dimen/common_spacing"
-            android:background="@color/divider_color"
-            app:layout_constraintBottom_toTopOf="@id/swiperefresh"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header" />
 
         <TextView
             android:id="@+id/emptyText"
@@ -95,7 +80,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
             tools:layout_editor_absoluteX="16dp">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -106,7 +90,6 @@
                 tools:listitem="@layout/card_wall_post" />
 
 
-
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -115,9 +98,9 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:focusable="true"
-        android:layout_gravity="bottom|end"
         app:srcCompat="@drawable/add"
         tools:ignore="ContentDescription" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
