@@ -16,12 +16,26 @@
             android:layout_marginStart="@dimen/marginLeft"
             android:layout_marginTop="@dimen/marginTop"
             android:text="@string/header_events"
-            android:textSize="@dimen/textView_header_textSize"
             android:visibility="visible"
+            android:textSize="@dimen/textView_header_textSize"
             app:autoSizeTextType="none"
+            app:layout_constraintBottom_toTopOf="@id/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginEnd="@dimen/common_spacing"
+            android:layout_marginBottom="@dimen/common_spacing"
+            android:background="@color/divider_color"
+            app:layout_constraintBottom_toTopOf="@id/swiperefresh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerEvents" />
 
         <TextView
             android:id="@+id/emptyText"
@@ -49,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
             tools:layout_editor_absoluteX="0dp">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -72,4 +87,3 @@
         app:srcCompat="@drawable/add"
         tools:ignore="ContentDescription" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
