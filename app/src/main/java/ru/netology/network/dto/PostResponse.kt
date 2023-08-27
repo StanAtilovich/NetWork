@@ -21,7 +21,7 @@ data class PostResponse(
 
 fun PostResponse.toPost(): Post{
     return Post(
-        id,
+       id,
         authorId,
         author,
         authorAvatar,
@@ -32,14 +32,15 @@ fun PostResponse.toPost(): Post{
         link,
         likeOwnerIds,
         mentionIds,
-        mentionIds?.mapNotNull { id ->
-            users?.get(id.toString())?.name
+        mentionIds?.map { id ->
+            users?.get(id.toString())!!.name
         },
         mentionedMe,
         likedByMe,
         attachment,
         ownedByMe
     )
+
 }
 
 

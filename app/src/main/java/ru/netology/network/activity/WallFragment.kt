@@ -140,7 +140,7 @@ class WallFragment : Fragment() {
         }
 
         binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_wallFragment_to_newPostFragment)
+            findNavController().navigate(R.id.action_wallFragment_to_newPostFragment)//action_wallFragment_to_newPostFragment)
         }
 
         binding.author.setOnClickListener {

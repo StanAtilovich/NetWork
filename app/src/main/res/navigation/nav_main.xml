@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_postFeedFragment_to_wallFragment"
             app:destination="@+id/wallFragment" />
+        <action
+            android:id="@+id/action_postFeedFragment_to_newPostFragment2"
+            app:destination="@id/newPostFragment" />
 
     </fragment>
 
