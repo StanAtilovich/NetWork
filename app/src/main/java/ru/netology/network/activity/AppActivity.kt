@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import com.yandex.mapkit.geometry.Point
 import dagger.hilt.android.AndroidEntryPoint
 import ru.netology.network.R
+import ru.netology.network.activity.FeedJobFragment.Companion.user_Id
 import ru.netology.network.activity.WallFragment.Companion.userId
 import ru.netology.network.auth.AppAuth
 import ru.netology.network.viewmodel.AuthViewModel
@@ -73,7 +74,7 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
                     R.id.feedJobsFragment,
                     Bundle().apply
                     {
-                        userId = auth.authStateFlow.value.id
+                        user_Id = auth.authStateFlow.value.id
                     })
                 true
             }
