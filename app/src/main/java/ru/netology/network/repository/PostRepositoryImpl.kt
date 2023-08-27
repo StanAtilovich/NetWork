@@ -142,26 +142,7 @@ class PostRepositoryImpl @Inject constructor(
 
             val bodyResponse =
                 response.body() ?: throw ApiError(response.code(), response.message())
-            val postResponse = Post(
-                bodyResponse.id,
-                bodyResponse.authorId,
-                bodyResponse.author,
-                bodyResponse.authorAvatar,
-                bodyResponse.authorJob,
-                bodyResponse.content,
-                bodyResponse.published,
-                bodyResponse.coords,
-                bodyResponse.link,
-                bodyResponse.likeOwnerIds,
-                bodyResponse.mentionIds,
-                bodyResponse.mentionIds?.map { id ->
-                    bodyResponse.users?.get(id.toString())!!.name
-                },
-                bodyResponse.mentionedMe,
-                bodyResponse.likedByMe,
-                bodyResponse.attachment,
-                bodyResponse.ownedByMe
-            )
+            val postResponse = bodyResponse.toPost()
             val users =
                 bodyResponse.users?.map {
                     Users(
