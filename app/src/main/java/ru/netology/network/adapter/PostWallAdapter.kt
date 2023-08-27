@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.adapter
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import android.widget.PopupMenu
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.network.R
 import ru.netology.network.databinding.CardWallPostBinding
 import ru.netology.network.dto.Post
 import ru.netology.network.enumeration.AttachmentType

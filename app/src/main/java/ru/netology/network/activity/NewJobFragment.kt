@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 import android.app.DatePickerDialog
 import android.icu.text.SimpleDateFormat
@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import ru.netology.network.R
+import ru.netology.network.activity.dateFormat
 import ru.netology.network.databinding.FragmentNewJobBinding
 import ru.netology.network.util.AndroidUtils
 import ru.netology.network.viewmodel.PostViewModel

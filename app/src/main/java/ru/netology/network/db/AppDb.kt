@@ -9,9 +9,9 @@ import ru.netology.network.dao.JobDao
 import ru.netology.network.dao.PostDao
 import ru.netology.network.dao.UserDao
 import ru.netology.network.entity.EventEntity
-import ru.netology.nework.entity.JobEntity
-import ru.netology.nework.entity.PostEntity
-import ru.netology.nework.entity.UserEntity
+import ru.netology.network.entity.JobEntity
+import ru.netology.network.entity.PostEntity
+import ru.netology.network.entity.UserEntity
 
 @Database(
     entities = [PostEntity::class, UserEntity::class, EventEntity::class, JobEntity::class],

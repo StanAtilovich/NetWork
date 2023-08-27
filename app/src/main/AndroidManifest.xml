@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:name=".aplication.NeWorkApplication">
         <activity
-            android:name="AppActivity"
+            android:name=".activity.AppActivity"
             android:exported="true">
             <nav-graph android:value="@navigation/nav_main"/>
             <intent-filter>

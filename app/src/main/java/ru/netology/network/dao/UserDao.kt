@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
-import ru.netology.nework.entity.UserEntity
+import ru.netology.network.entity.UserEntity
 
 @Dao
 interface UserDao {

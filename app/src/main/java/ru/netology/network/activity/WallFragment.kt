@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,10 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import ru.netology.network.FeedJobFragment.Companion.user_Id
-import ru.netology.network.ImagePreviewFragment.Companion.textArg
-import ru.netology.network.MapsPreviewFragment.Companion.doubleArg1
-import ru.netology.network.MapsPreviewFragment.Companion.doubleArg2
+import ru.netology.network.adapter.OnInteractionWallListener
+import ru.netology.network.adapter.PostWallAdapter
+import ru.netology.network.R
+import ru.netology.network.activity.FeedJobFragment.Companion.user_Id
+import ru.netology.network.activity.ImagePreviewFragment.Companion.textArg
+import ru.netology.network.activity.MapsPreviewFragment.Companion.doubleArg1
+import ru.netology.network.activity.MapsPreviewFragment.Companion.doubleArg2
 import ru.netology.network.databinding.FragmentWallBinding
 import ru.netology.network.dto.Post
 import ru.netology.network.util.LongArg
@@ -96,7 +99,8 @@ class WallFragment : Fragment() {
 
             override fun onPreviewMap(post: Post) {
                 if (post.coords?.lat != null && post.coords.long != null) {
-                    findNavController().navigate(R.id.action_wallFragment_to_mapsPreviewFragment,
+                    findNavController().navigate(
+                        R.id.action_wallFragment_to_mapsPreviewFragment,
                         Bundle().apply {
                             doubleArg1 = post.coords.lat.toDouble()
                             doubleArg2 = post.coords.long.toDouble()
@@ -140,7 +144,8 @@ class WallFragment : Fragment() {
         }
 
         binding.author.setOnClickListener {
-            findNavController().navigate(R.id.action_wallFragment_to_feedJobsFragment,
+            findNavController().navigate(
+                R.id.action_wallFragment_to_feedJobsFragment,
                 Bundle().apply {
                     user_Id = userId
                 })
@@ -148,7 +153,8 @@ class WallFragment : Fragment() {
         }
 
         binding.avatar.setOnClickListener {
-            findNavController().navigate(R.id.action_wallFragment_to_feedJobsFragment,
+            findNavController().navigate(
+                R.id.action_wallFragment_to_feedJobsFragment,
                 Bundle().apply {
                     user_Id = userId
                 })

@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 
 import android.app.Activity
@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import ru.netology.network.R
 import ru.netology.network.databinding.FragmentLoginBinding
 import ru.netology.network.util.AndroidUtils.Companion.hideKeyboard
 import ru.netology.network.view.afterTextChanged

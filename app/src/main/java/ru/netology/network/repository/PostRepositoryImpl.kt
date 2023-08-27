@@ -19,10 +19,10 @@ import ru.netology.network.enumeration.AttachmentType
 import ru.netology.network.error.ApiError
 import ru.netology.network.error.AppError
 import ru.netology.network.error.NetworkError
-import ru.netology.nework.entity.PostEntity
-import ru.netology.nework.entity.UserEntity
-import ru.netology.nework.entity.toDto
-import ru.netology.nework.entity.toEntity
+import ru.netology.network.entity.PostEntity
+import ru.netology.network.entity.UserEntity
+import ru.netology.network.entity.toDto
+import ru.netology.network.entity.toEntity
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton

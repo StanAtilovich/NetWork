@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,13 +10,16 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import ru.netology.network.ImagePreviewFragment.Companion.textArg
-import ru.netology.network.MapsPreviewFragment.Companion.doubleArg1
-import ru.netology.network.MapsPreviewFragment.Companion.doubleArg2
-import ru.netology.network.WallFragment.Companion.userAvatar
-import ru.netology.network.WallFragment.Companion.userId
-import ru.netology.network.WallFragment.Companion.userName
-import ru.netology.network.WallFragment.Companion.userPosition
+import ru.netology.network.activity.ImagePreviewFragment.Companion.textArg
+import ru.netology.network.activity.MapsPreviewFragment.Companion.doubleArg1
+import ru.netology.network.activity.MapsPreviewFragment.Companion.doubleArg2
+import ru.netology.network.adapter.OnInteractionListener
+import ru.netology.network.adapter.PostAdapter
+import ru.netology.network.R
+import ru.netology.network.activity.WallFragment.Companion.userAvatar
+import ru.netology.network.activity.WallFragment.Companion.userId
+import ru.netology.network.activity.WallFragment.Companion.userName
+import ru.netology.network.activity.WallFragment.Companion.userPosition
 import ru.netology.network.databinding.FragmentPostFeedBinding
 import ru.netology.network.dto.Post
 import ru.netology.network.viewmodel.PostViewModel
@@ -50,7 +53,8 @@ class FeedFragment : Fragment() {
 
             override fun onPreviewMap(post: Post) {
                 if (post.coords?.lat != null && post.coords.long != null) {
-                    findNavController().navigate(R.id.action_postFeedFragment_to_mapsPreviewFragment,
+                    findNavController().navigate(
+                        R.id.action_postFeedFragment_to_mapsPreviewFragment,
                         Bundle().apply {
                             doubleArg1 = post.coords.lat.toDouble()
                             doubleArg2 = post.coords.lat.toDouble()
@@ -64,7 +68,8 @@ class FeedFragment : Fragment() {
                 userPosition: String?,
                 userAvatar: String?
             ) {
-                findNavController().navigate(R.id.action_postFeedFragment_to_wallFragment,
+                findNavController().navigate(
+                    R.id.action_postFeedFragment_to_wallFragment,
                     Bundle().apply
                     {
                         this.userId = userId
@@ -75,7 +80,8 @@ class FeedFragment : Fragment() {
             }
 
             override fun onPreviewImage(post: Post) {
-                findNavController().navigate(R.id.action_postFeedFragment_to_imagePreviewFragment,
+                findNavController().navigate(
+                    R.id.action_postFeedFragment_to_imagePreviewFragment,
                     Bundle().apply
                     { textArg = post.attachment?.url })
             }

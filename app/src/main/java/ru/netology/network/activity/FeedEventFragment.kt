@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import ru.netology.network.MapsPreviewFragment.Companion.doubleArg1
-import ru.netology.network.MapsPreviewFragment.Companion.doubleArg2
+import ru.netology.network.adapter.EventAdapter
+import ru.netology.network.activity.MapsPreviewFragment.Companion.doubleArg1
+import ru.netology.network.activity.MapsPreviewFragment.Companion.doubleArg2
+import ru.netology.network.adapter.OnInteractionEventListener
+import ru.netology.network.R
 import ru.netology.network.databinding.FragmentEventFeedBinding
 import ru.netology.network.dto.Event
 import ru.netology.network.viewmodel.PostViewModel
@@ -47,7 +50,8 @@ class FeedEventFragment : Fragment() {
 
             override fun onPreviewMap(event: Event) {
                 if (event.coords?.lat != null && event.coords.long != null) {
-                    findNavController().navigate(R.id.action_feedEventFragment_to_mapsPreviewFragment,
+                    findNavController().navigate(
+                        R.id.action_feedEventFragment_to_mapsPreviewFragment,
                         Bundle().apply
                         {
                             doubleArg1 = event.coords.lat.toDouble()

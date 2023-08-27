@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 
 import android.app.Activity
@@ -19,8 +19,9 @@ import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import ru.netology.network.MapsNewMarkerFragment.Companion.latArg
-import ru.netology.network.MapsNewMarkerFragment.Companion.longArg
+import ru.netology.network.R
+import ru.netology.network.activity.MapsNewMarkerFragment.Companion.latArg
+import ru.netology.network.activity.MapsNewMarkerFragment.Companion.longArg
 import ru.netology.network.databinding.FragmentNewPostBinding
 import ru.netology.network.util.AndroidUtils
 import ru.netology.network.view.load
@@ -160,7 +161,8 @@ class PostNewFragment : Fragment() {
         }
 
         binding.buttonLocationOn.setOnClickListener {
-            findNavController().navigate(R.id.action_newPostFragment_to_mapsNewMarkerFragment,
+            findNavController().navigate(
+                R.id.action_newPostFragment_to_mapsNewMarkerFragment,
                 Bundle().apply {
                     latArg = viewModel.coords.value?.lat?.toDouble() ?: coordinateCheb.latitude
                     longArg = viewModel.coords.value?.long?.toDouble() ?: coordinateCheb.longitude

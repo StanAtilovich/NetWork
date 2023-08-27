@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +9,8 @@ import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import com.yandex.mapkit.geometry.Point
 import dagger.hilt.android.AndroidEntryPoint
-import ru.netology.network.WallFragment.Companion.userId
+import ru.netology.network.R
+import ru.netology.network.activity.WallFragment.Companion.userId
 import ru.netology.network.auth.AppAuth
 import ru.netology.network.viewmodel.AuthViewModel
 import javax.inject.Inject
@@ -48,7 +49,8 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.wall -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.wallFragment,
+                findNavController(R.id.nav_host_fragment).navigate(
+                    R.id.wallFragment,
                     Bundle().apply
                     {
                         userId = auth.authStateFlow.value.id
@@ -67,7 +69,8 @@ class AppActivity : AppCompatActivity(R.layout.activity_main) {
             }
 
             R.id.jobs -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.feedJobsFragment,
+                findNavController(R.id.nav_host_fragment).navigate(
+                    R.id.feedJobsFragment,
                     Bundle().apply
                     {
                         userId = auth.authStateFlow.value.id

@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +14,7 @@ import com.yandex.mapkit.mapview.MapView
 import com.yandex.runtime.Runtime
 import com.yandex.runtime.image.ImageProvider
 import dagger.hilt.android.AndroidEntryPoint
+import ru.netology.network.R
 import ru.netology.network.databinding.FragmentMapPreviewBinding
 import ru.netology.network.util.DoubleArg
 

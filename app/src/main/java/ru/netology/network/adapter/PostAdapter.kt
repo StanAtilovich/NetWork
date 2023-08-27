@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.adapter
 
 
 
@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.network.R
 import ru.netology.network.databinding.CardPostBinding
 import ru.netology.network.dto.Post
 import ru.netology.network.enumeration.AttachmentType

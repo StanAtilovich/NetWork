@@ -1,4 +1,4 @@
-package ru.netology.nework.entity
+package ru.netology.network.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -31,4 +31,4 @@ data class UserEntity(
 }
 
 fun List<UserEntity>.toDto(): List<Users> = map(UserEntity::toDto)
-fun List<Users>.toEntity(): List<UserEntity> = map(UserEntity::fromDto)
+fun List<Users>.toEntity(): List<UserEntity> = map(UserEntity.Companion::fromDto)

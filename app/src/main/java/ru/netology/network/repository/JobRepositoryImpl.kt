@@ -10,9 +10,9 @@ import ru.netology.network.dto.Job
 import ru.netology.network.dto.JobRequest
 import ru.netology.network.error.ApiError
 import ru.netology.network.error.NetworkError
-import ru.netology.nework.entity.JobEntity
-import ru.netology.nework.entity.toDto
-import ru.netology.nework.entity.toEntity
+import ru.netology.network.entity.JobEntity
+import ru.netology.network.entity.toDto
+import ru.netology.network.entity.toEntity
 import java.io.IOException
 
 import javax.inject.Inject

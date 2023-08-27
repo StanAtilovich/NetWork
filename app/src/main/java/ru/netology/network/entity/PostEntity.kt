@@ -1,4 +1,4 @@
-package ru.netology.nework.entity
+package ru.netology.network.entity
 
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -6,8 +6,6 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import ru.netology.network.dao.Converters
 import ru.netology.network.dto.Post
-import ru.netology.network.entity.AttachmentEmbeddable
-import ru.netology.network.entity.CoordEmbeddable
 
 @Entity
 data class PostEntity(
@@ -78,4 +76,4 @@ data class PostEntity(
 }
 
 fun List<PostEntity>.toDto(): List<Post> = map(PostEntity::toDto)
-fun List<Post>.toEntity(): List<PostEntity> = map(PostEntity::fromDto)
+fun List<Post>.toEntity(): List<PostEntity> = map(PostEntity.Companion::fromDto)

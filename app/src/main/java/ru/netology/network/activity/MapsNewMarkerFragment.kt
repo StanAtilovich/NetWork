@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.activity
 
 import android.content.pm.PackageManager
 import android.graphics.PointF
@@ -34,6 +34,7 @@ import com.yandex.runtime.Runtime
 import com.yandex.runtime.image.ImageProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import ru.netology.network.R
 import ru.netology.network.databinding.FragmentMapNewMarkerBinding
 import ru.netology.network.util.AndroidUtils
 import ru.netology.network.util.DoubleArg

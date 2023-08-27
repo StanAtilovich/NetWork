@@ -1,4 +1,4 @@
-package ru.netology.nework.entity
+package ru.netology.network.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -46,4 +46,4 @@ data class JobEntity(
 }
 
 fun List<JobEntity>.toDto(): List<Job> = map(JobEntity::toDto)
-fun List<Job>.toEntity(): List<JobEntity> = map(JobEntity::fromDto)
+fun List<Job>.toEntity(): List<JobEntity> = map(JobEntity.Companion::fromDto)

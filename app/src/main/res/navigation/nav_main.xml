@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/postFeedFragment"
-        android:name="ru.netology.network.PostNewFragment"
+        android:name="ru.netology.network.activity.PostNewFragment"
         android:label="fragment_post_feed"
         tools:layout="@layout/fragment_post_feed">
         <action
@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/newPostFragment"
-        android:name="ru.netology.network.NewEventFragment"
+        android:name="ru.netology.network.activity.NewEventFragment"
         android:label="fragment_new_post"
         tools:layout="@layout/fragment_new_post">
         <action
@@ -52,23 +52,23 @@
 
     <fragment
         android:id="@+id/imagePreviewFragment"
-        android:name="ru.netology.network.ImagePreviewFragment"
+        android:name="ru.netology.network.activity.ImagePreviewFragment"
         android:label="ImagePreviewFragment" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="ru.netology.network.LoginFragment"
+        android:name="ru.netology.network.activity.LoginFragment"
         android:label="LoginFragment" />
     <fragment
         android:id="@+id/mapsPreviewFragment"
-        android:name="ru.netology.network.MapsPreviewFragment"
+        android:name="ru.netology.network.activity.MapsPreviewFragment"
         android:label="mapsPreviewFragment" />
     <fragment
         android:id="@+id/mapsNewMarkerFragment"
-        android:name="ru.netology.network.MapsNewMarkerFragment"
+        android:name="ru.netology.network.activity.MapsNewMarkerFragment"
         android:label="mapsNewMarkerFragment" />
     <fragment
         android:id="@+id/feedEventFragment"
-        android:name="ru.netology.network.FeedEventFragment"
+        android:name="ru.netology.network.activity.FeedEventFragment"
         android:label="feedEventFragment" >
     <action
         android:id="@+id/action_feedEventFragment_to_mapsPreviewFragment"
@@ -80,7 +80,7 @@
 
     <fragment
         android:id="@+id/newEventFragment"
-        android:name="ru.netology.network.NewEventFragment"
+        android:name="ru.netology.network.activity.NewEventFragment"
         android:label="NewEventFragment" >
         <action
             android:id="@+id/action_newEventFragment_to_mapsNewMarkerFragment"
@@ -89,7 +89,7 @@
 
     <fragment
         android:id="@+id/feedJobsFragment"
-        android:name="ru.netology.network.FeedJobFragment"
+        android:name="ru.netology.network.activity.FeedJobFragment"
         android:label="FeedJobsFragment" >
         <action
             android:id="@+id/action_feedJobsFragment_to_newJobFragment"
@@ -97,11 +97,11 @@
     </fragment>
     <fragment
         android:id="@+id/newJobFragment"
-        android:name="ru.netology.network.NewJobFragment"
+        android:name="ru.netology.network.activity.NewJobFragment"
         android:label="NewJobFragment" />
     <fragment
         android:id="@+id/wallFragment"
-        android:name="ru.netology.network.WallFragment"
+        android:name="ru.netology.network.activity.WallFragment"
         android:label="WallFragment" >
         <action
             android:id="@+id/action_wallFragment_to_newPostFragment"

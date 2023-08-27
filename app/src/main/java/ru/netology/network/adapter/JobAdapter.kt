@@ -1,4 +1,4 @@
-package ru.netology.network
+package ru.netology.network.adapter
 
 
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.network.R
 import ru.netology.network.databinding.CardJobBinding
 import ru.netology.network.dto.Job
 import ru.netology.network.util.convertString2DateTime2String
