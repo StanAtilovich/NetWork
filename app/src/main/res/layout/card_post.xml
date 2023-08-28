@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.AppTheme.CardView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,12 +27,11 @@
             android:id="@+id/author"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="@dimen/common_spacing"
             android:ellipsize="end"
             android:singleLine="true"
             app:layout_constraintBottom_toTopOf="@+id/authorJob"
-            app:layout_constraintStart_toEndOf="@id/menu"
-            app:layout_constraintStart_toStartOf="@+id/avatar"
+            app:layout_constraintStart_toEndOf="@id/avatar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="@string/user_name" />

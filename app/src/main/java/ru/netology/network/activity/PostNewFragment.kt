@@ -175,6 +175,7 @@ class PostNewFragment : Fragment() {
         }
 
         viewModel.postCreated.observe(viewLifecycleOwner) {
+            findNavController().navigateUp()
         }
 
         viewModel.coords.observe(viewLifecycleOwner) {
