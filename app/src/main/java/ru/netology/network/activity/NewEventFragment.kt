@@ -255,7 +255,6 @@ class NewEventFragment : Fragment() {
 
 
         viewModel.evenCreated.observe(viewLifecycleOwner) {
-          //  findNavController().navigateUp()
         }
 
         viewModel.coords.observe(viewLifecycleOwner) {

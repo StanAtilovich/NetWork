@@ -143,8 +143,6 @@ class PostRepositoryImpl @Inject constructor(
             val bodyResponse =
                 response.body() ?: throw ApiError(response.code(), response.message())
             val postResponse =
-
-
                 bodyResponse.toPost()
 
 

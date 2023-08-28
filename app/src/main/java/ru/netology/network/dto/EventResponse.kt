@@ -25,25 +25,5 @@ data class EventResponse(
     val users: Map<String, UserPreview>?,
 )
 
-fun EventResponse.toPost(): Post {
-    return Post(
-        id,
-        authorId,
-        author,
-        authorAvatar,
-        authorJob,
-        content,
-        published,
-        coords,
-        link,
-        likeOwnerIds,
-        mentionIds = null,
-        mentionList = null,
-        mentionedMe=false,
-        likedByMe,
-        attachment,
-        ownedByMe
-    )
-}
 
 
