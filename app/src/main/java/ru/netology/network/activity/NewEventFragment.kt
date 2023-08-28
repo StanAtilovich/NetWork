@@ -256,7 +256,6 @@ class NewEventFragment : Fragment() {
 
         viewModel.evenCreated.observe(viewLifecycleOwner) {
         }
-
         viewModel.coords.observe(viewLifecycleOwner) {
             binding.textCoordLat.text = viewModel.coords.value?.lat
             binding.textCoordLong.text = viewModel.coords.value?.long
