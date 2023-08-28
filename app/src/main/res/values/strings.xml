@@ -62,4 +62,5 @@
     <string name="new_post_empty_content">Заполните содержимое поста</string>
     <string name="error_loading">Не удалось загрузить данные</string>
     <string name="authorization_error">Ошибка при авторизации</string>
+    <string name="new_event_change_datetime2">Изменить время</string>
 </resources>
