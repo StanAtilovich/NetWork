@@ -297,15 +297,14 @@ class PostViewModel @Inject constructor(
 
     fun saveEvent() {
         editedEvent.value?.let { event ->
-            _eventCreated.value = Unit
             viewModelScope.launch {
                 try {
                     when (_photo.value) {
                         noPhoto -> {
-                            var EventNew = event
+                            var eventNew = event
                             if (event.attachment != null)
-                                EventNew = event.copy(attachment = null)
-                            eventsRepository.saveEvent(EventNew)
+                                eventNew = event.copy(attachment = null)
+                            eventsRepository.saveEvent(eventNew)
                         }
 
                         else -> {
@@ -318,6 +317,7 @@ class PostViewModel @Inject constructor(
                         }
                     }
                     _dataState.value = FeedModelState()
+                    _eventCreated.value = Unit
                 } catch (e: Exception) {
                     _dataState.value = FeedModelState(error = true)
                 }

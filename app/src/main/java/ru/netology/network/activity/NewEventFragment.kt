@@ -255,6 +255,7 @@ class NewEventFragment : Fragment() {
 
 
         viewModel.evenCreated.observe(viewLifecycleOwner) {
+            findNavController().navigateUp()
         }
         viewModel.coords.observe(viewLifecycleOwner) {
             binding.textCoordLat.text = viewModel.coords.value?.lat
