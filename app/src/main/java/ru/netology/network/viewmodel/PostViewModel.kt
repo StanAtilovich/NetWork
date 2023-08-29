@@ -99,7 +99,7 @@ class PostViewModel @Inject constructor(
     val dataJobs: LiveData<JobFeedMode> = auth.authStateFlow
         .flatMapLatest { (myId, _) ->
             jobRepository.jobs
-                    // repository.jobs
+                // repository.jobs
                 .map { job ->
                     JobFeedMode(
                         job.map {
@@ -182,7 +182,6 @@ class PostViewModel @Inject constructor(
 
     fun savePosts() {
         editedPost.value?.let { post ->
-            _postCreated.value = Unit
             viewModelScope.launch {
                 try {
                     when (_photo.value) {
@@ -201,6 +200,7 @@ class PostViewModel @Inject constructor(
                             else repository.save(post)
                     }
                     _dataState.value = FeedModelState()
+                    _postCreated.value = Unit
                 } catch (e: Exception) {
                     _dataState.value = FeedModelState(error = true)
                 }
@@ -333,7 +333,6 @@ class PostViewModel @Inject constructor(
     }
 
 
-
     fun changeDateTimeEvent(data: String, time: String) {
         val dataTime = convertDateTime2ISO_Instant(data, time)
         editedEvent.value = editedEvent.value?.copy(datetime = dataTime)
@@ -450,7 +449,6 @@ class PostViewModel @Inject constructor(
         }
         editeJob.value = emptyJob
     }
-
 
 
     fun changeJobStart(start: String) {
