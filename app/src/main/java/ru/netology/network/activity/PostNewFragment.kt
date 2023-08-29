@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -29,9 +30,7 @@ import ru.netology.network.viewmodel.PostViewModel
 
 @AndroidEntryPoint
 class PostNewFragment : Fragment() {
-    private val viewModel: PostViewModel by viewModels(
-
-    )
+    private val viewModel: PostViewModel by activityViewModels()
 
     private var fragmentBinding: FragmentNewPostBinding? = null
 
@@ -175,6 +174,7 @@ class PostNewFragment : Fragment() {
         }
 
         viewModel.postCreated.observe(viewLifecycleOwner) {
+            findNavController().navigateUp()
         }
 
         viewModel.coords.observe(viewLifecycleOwner) {

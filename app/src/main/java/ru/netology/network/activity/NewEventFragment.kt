@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -39,8 +40,7 @@ import ru.netology.network.viewmodel.PostViewModel
 
 @AndroidEntryPoint
 class NewEventFragment : Fragment() {
-    private val viewModel: PostViewModel by viewModels(
-    )
+    private val viewModel: PostViewModel by activityViewModels()
     private var fragmentBinding: FragmentNewEventBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -255,6 +255,7 @@ class NewEventFragment : Fragment() {
 
 
         viewModel.evenCreated.observe(viewLifecycleOwner) {
+            findNavController().navigateUp()
         }
         viewModel.coords.observe(viewLifecycleOwner) {
             binding.textCoordLat.text = viewModel.coords.value?.lat

@@ -84,8 +84,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="36dp"
-        android:focusable="true"
-        app:srcCompat="@drawable/add"
-        tools:ignore="ImageContrastCheck" />
+        app:icon="@drawable/add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
