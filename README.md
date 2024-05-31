@@ -88,3 +88,7 @@
 1. Выполнены минимальные требования к работе.
 1. Приложение полностью функционирует (нет логически недоделанных частей, заглушек, `TODO` и т.д.).
 1. Нет явных изъянов в архитектуре, "плохо пахнущего кода", нигде не едет вёрстка, противоречий с Design Guidelines, используются современные инструменты и библиотеки.
+
+![Примерно как выглядит приложение](https://github.com/StanAtilovich/NetWork/blob/master/photo_2024-05-31_12-10-41.jpg)
+![](https://github.com/StanAtilovich/NetWork/blob/master/photo_2024-05-31_12-10-45.jpg)
+![](https://github.com/StanAtilovich/NetWork/blob/master/photo_2024-05-31_12-10-48.jpg)
